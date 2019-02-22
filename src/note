@@ -1,0 +1,113 @@
+
+
+/****** ART   ******/
+
+
+Surface
+
+width : 渲染区域的宽
+height : 定义渲染区域的高
+
+
+Shape
+
+d : 定义绘制路径
+stroke : 描边颜色
+strokeWidth : 描边宽度
+strokeDash : 定义虚线
+fill : 填充颜色
+
+
+Text
+
+funt : 字体样式，定义字体、大小、是否加粗 如: bold 35px Heiti SC
+
+
+Path
+
+moveTo(x,y) : 移动到坐标（x,y）
+lineTo(x,y) : 连线到（x,y）
+arc() : 绘制弧线
+close() : 封闭空间
+
+
+Wedge
+
+扇形
+
+
+
+
+arc(x, y, radius, startAngle, endAngle, anticlockwise)
+
+x 圆弧中心（圆心）的 x 轴坐标。
+
+y 圆弧中心（圆心）的 y 轴坐标。
+
+radius 圆弧的半径。
+
+startAngle 圆弧的起始点， x轴方向开始计算，单位以弧度表示。
+
+endAngle 圆弧的终点， 单位以弧度表示。
+
+anticlockwise 可选 可选的Boolean值 ，如果为 true，逆时针绘制圆弧，反之，顺时针绘制
+
+
+
+
+
+
+fill '#000' 内部填充规则(填充颜色，填充渐变图形)
+
+fillOpacity 1 填充的透明度
+
+stroke 'none' 描边颜色
+
+strokeWidth 1 描边的宽度
+
+strokeOpacity 1 描边的透明度
+
+strokeLinecap 'square' 描边线段端点显示方式
+
+strokeLinejoin 'miter' 描边线段连接处的显示方式
+
+strokeDasharray [] 描边线段断点显示规则
+
+strokeDashoffset 虚线的偏移量
+
+
+x 0 当前图形x轴偏移量
+
+y 0 当前图形y轴偏移量
+
+rotate 0 当前图形旋转值
+
+scale 1 当前图形的缩放值
+
+origin 0, 0 变形原点(x,y,rotate,scale的变形原点坐标)
+
+originX 0 变形原点x轴坐标
+
+originY 0 变形原点y轴坐标
+
+
+
+创建虚线时候用到的属性：
+
+strokeDasharray 创建虚线
+
+// 假设一个‘空格’5像素，一个‘_’5像素
+
+strokeDasharray="5"
+
+// 看到的是 _ _ _ _ 即5像素实线，5像素空白，5像素实线，.... 循环
+
+strokeDasharray="5,10"
+// 看到的是 _  _  _  _  5像素实线，10像素空白...循环
+strokeDashoffset 虚线的位移
+
+strokeDasharray="5"
+strokeDashoffset="1"
+
+// 看到的第一个_会往左边挪动1像素
+
