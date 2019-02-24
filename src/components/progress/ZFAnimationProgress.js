@@ -18,8 +18,24 @@ const AnimationLineProgress = Animated.createAnimatedComponent(ZFLineProgressVie
 export default class ZFAnimationProgress extends Component {
 
     static propTypes={
-        ...ZFLineProgressView.propTypes,
+        type:Proptypes.oneOf(['line','circle','fan']),/** 进度条类型 */
+        strokeCap:Proptypes.oneOf(['butt','round']),/** 进度条是直角还是圆角 默认圆角 round 用于条形进度条 */
 
+        progressStyle:ViewPropTypes.style,/** 用于进度条表框样式 */
+        strokeWidth:Proptypes.number,/** 进度条宽度 默认15  */
+        progressBaseColor:Proptypes.string,/** 进度条底部颜色  */
+        progressColor:Proptypes.string,/** 进度条颜色  */
+        showProgress:Proptypes.bool,/** 是否显示进度  默认false */
+        progress:Proptypes.number,/** 进度 */
+        radius:Proptypes.number,/** 半径 */
+
+        rightView:Proptypes.element,/** 右视图 */
+        leftView:Proptypes.element,/** 右视图 */
+
+    }
+
+    static defaultProps={
+        type:'line',
     }
 
 
@@ -48,32 +64,51 @@ export default class ZFAnimationProgress extends Component {
                 easeOut:Easing.linear()
             }),
         ]).start()
-
     }
 
-    render() {
-        console.log('========')
+    onGetProgressType(){
         var self = this;
         const {
-
+            type,
 
         }=self.props;
         const {
-
             progress1,
-
         }=self.state;
-        return (
+
+        switch (type){
+            case 'circle':
+            case 'fan':
+                return (
+                    <AnimatedCirleProgress {...self.props} ref={o=>this.tag=o} progress={progress1} />
+                );
+                break;
+            default:
+                return (
+                    <AnimationLineProgress {...self.props} progress={progress1} />
+                );
+                break;
+        }
+    }
+
+    render() {
+        var self = this;
+        const {
+            rightView,
+            leftView,
+        }=self.props;
+        return(
             <View style={{
                 ...styles.container,
+                flex:1,
+                flexDirection:'row',
+                alignItems:'center',
             }}>
-                {/*<AnimatedCirleProgress ref={o=>this.tag=o} line={progress1} />*/}
-
-                <AnimationLineProgress {...self.props} progress={progress1} />
-
-
+                {leftView}
+                {this.onGetProgressType()}
+                {rightView}
             </View>
-        );
+            )
     }
 
 
