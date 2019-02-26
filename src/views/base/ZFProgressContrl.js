@@ -32,6 +32,8 @@ export default class ZFProgressContrl extends Component {
            <View style={cusStyle.container}>
                <ScrollView>
 
+
+
                    <View>
                        <ZFTitleView title="进度条形状" />
 
@@ -122,7 +124,54 @@ export default class ZFProgressContrl extends Component {
                        }}>
                            <ZFAnimationProgress type={'circle'} progress={0.8}   />
                            <ZFAnimationProgress progressColor="#6739b6" radius={30} type={'circle'} showProgress={true} progress={0.3}  />
-                           <ZFAnimationProgress progressColor="#f37b1d" radius={40} strokeWidth={7} type={'circle'} showProgress={true} progress={0.3}  />
+                           <ZFAnimationProgress progressColor="#f37b1d" radius={40} strokeWidth={7} type={'circle'} showProgress={true} progress={0.5}  />
+                       </View>
+                   </View>
+
+                   <View style={{
+                       marginTop:10
+                   }}>
+                       <ZFTitleView title="圆型进度条布局" />
+
+                       <View style={{
+                           padding:10,
+                           backgroundColor:'#fff',
+                           marginTop:1,
+                           ...cusStyle.layout_row
+                       }}>
+                           <ZFAnimationProgress showProgress={true} type={'circle'} progress={0.8}  >
+                               <IconFont
+                                   name={'ic_layout'}
+                                   size={40}
+                                   color='#e54d42'
+                               />
+                           </ZFAnimationProgress>
+
+                           <ZFAnimationProgress progressColor="#6739b6" radius={40} type={'circle'}  strokeWidth={5} showProgress={true} progress={0.3}  >
+                               <View style={{
+                                   flexDirection:'row',
+                                   alignItems:'center'
+                               }}>
+                                   <IconFont
+                                       name={'ic_beijing'}
+                                       size={20}
+                                       color='#6739b6'
+                                   />
+                                   <Text style={{
+                                       color:'#6739b6',
+                                       fontSize:10,
+                                   }}>自定义</Text>
+                               </View>
+                           </ZFAnimationProgress>
+
+                           <ZFAnimationProgress showProgress={true} type={'circle'} progress={0.6} rightView={
+                               <Text style={{
+                                   color:'#6739b6',
+                                   fontSize:14,
+                               }}>右视图</Text>
+                           } />
+
+
                        </View>
                    </View>
 
@@ -144,6 +193,21 @@ export default class ZFProgressContrl extends Component {
 
                        </View>
                    </View>
+
+                   {/*<View style={{*/}
+                       {/*marginTop:10*/}
+                   {/*}}>*/}
+                       {/*<ZFTitleView title="波浪形进度条" />*/}
+
+                       {/*<View style={{*/}
+                           {/*padding:10,*/}
+                           {/*backgroundColor:'#fff',*/}
+                           {/*marginTop:1,*/}
+                           {/*...cusStyle.layout_row*/}
+                       {/*}}>*/}
+                           {/*<ZFAnimationProgress type={'wave'}  showProgress={true} progress={0.8}   />*/}
+                       {/*</View>*/}
+                   {/*</View>*/}
 
                </ScrollView>
            </View>

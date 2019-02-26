@@ -13,13 +13,14 @@ const {
     Surface,
     Shape,
     Path,
-    Group
+    Group,
+    LinearGradient,
 }=ART;
 
 export default class ZFWedeg extends Component {
 
     static propTypes= {
-        progressColor: Proptypes.string, /** 圆弧颜色 */
+        progressColor:Proptypes.oneOfType([Proptypes.string,Proptypes.array]),/** 进度条颜色  */
         fillColor: Proptypes.string, /** 圆填充颜色 */
         progress: Proptypes.number, /** 圆弧值 */
         startX: Proptypes.number, /** 圆弧开始位置X*/
@@ -170,6 +171,7 @@ export default class ZFWedeg extends Component {
 
         console.log('====='+reslut)
         var path = new Path();
+
         var proptype={
             stroke:progressColor,
             strokeWidth:progressWidth,
@@ -178,10 +180,8 @@ export default class ZFWedeg extends Component {
         if(fan){
             reslut = reslut + `L${radius} ${radius}`;
             proptype={
-                fill:fillColor,
-                // stroke:progressColor,
+                fill:progressColor,
                 strokeWidth:progressWidth,
-                // strokeCap:'butt'
             }
             path.close();
         }
@@ -190,11 +190,9 @@ export default class ZFWedeg extends Component {
 
 
         return (
-            <Group>
-                <Shape  d ={path}
-                        {...proptype}
-                />
-            </Group>
+            <Shape  d ={path}
+                    {...proptype}
+            />
         );
     }
 

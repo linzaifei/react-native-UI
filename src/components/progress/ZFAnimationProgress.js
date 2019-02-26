@@ -13,12 +13,15 @@ import Proptypes from 'prop-types'
 
 import ZFCirleProgressView from './ZFCirleProgressView'
 import  ZFLineProgressView from './ZFLineProgressView'
+import ZFWaveView from './ZFWaveView'
 const AnimatedCirleProgress = Animated.createAnimatedComponent(ZFCirleProgressView);
 const AnimationLineProgress = Animated.createAnimatedComponent(ZFLineProgressView);
+const AnimationWaveView = Animated.createAnimatedComponent(ZFWaveView);
+
 export default class ZFAnimationProgress extends Component {
 
     static propTypes={
-        type:Proptypes.oneOf(['line','circle','fan']),/** 进度条类型 */
+        type:Proptypes.oneOf(['line','circle','fan','wave']),/** 进度条类型 */
         strokeCap:Proptypes.oneOf(['butt','round']),/** 进度条是直角还是圆角 默认圆角 round 用于条形进度条 */
 
         progressStyle:ViewPropTypes.style,/** 用于进度条表框样式 */
@@ -28,6 +31,7 @@ export default class ZFAnimationProgress extends Component {
         showProgress:Proptypes.bool,/** 是否显示进度  默认false */
         progress:Proptypes.number,/** 进度 */
         radius:Proptypes.number,/** 半径 */
+        children:Proptypes.node,/** 子试图 针对于 circle */
 
         rightView:Proptypes.element,/** 右视图 */
         leftView:Proptypes.element,/** 右视图 */
@@ -80,8 +84,13 @@ export default class ZFAnimationProgress extends Component {
             case 'circle':
             case 'fan':
                 return (
-                    <AnimatedCirleProgress {...self.props} ref={o=>this.tag=o} progress={progress1} />
+                    <AnimatedCirleProgress {...self.props}  progress={progress1} />
                 );
+                break;
+            case 'wave':
+                return(
+                    <AnimationWaveView  {...self.props}  progress={progress1}  />
+                )
                 break;
             default:
                 return (

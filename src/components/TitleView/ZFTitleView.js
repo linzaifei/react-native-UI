@@ -42,7 +42,7 @@ export default class ZFTitleView extends Component {
 
 
     render() {
-        console.log('========')
+        // console.log('========')
         var self = this;
         const {
             textStyle,

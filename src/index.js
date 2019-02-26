@@ -14,6 +14,7 @@ import IconFont from './Icon/IconFont'
 import ZFBase from './views/base/ZFBase'
 import ZFButtomContrl from './views/base/ZFButtomContrl'
 import ZFProgressContrl from './views/base/ZFProgressContrl'
+import ZFSwitchContrl from './views/base/ZFSwitchContrl'
 
 
 import ZFComponent from './views/component/ZFComponent'
@@ -101,6 +102,10 @@ const subStack=createStackNavigator({
     progressContrl:{
         screen:ZFProgressContrl,
     },
+    switchContrl:{
+        screen:ZFSwitchContrl,
+    },
+
 })
 
 

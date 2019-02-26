@@ -4,6 +4,7 @@ import {
     StyleSheet,
     View,
     ART,
+    Text,
     ViewPropTypes,
 } from 'react-native';
 
@@ -15,7 +16,7 @@ const {
     Surface,
     Shape,
     Path,
-    Text
+
 }=ART;
 
 export default class ZFCirleProgressView extends Component {
@@ -24,11 +25,11 @@ export default class ZFCirleProgressView extends Component {
         progressStyle:ViewPropTypes.style,/**  */
         strokeWidth:Proptypes.number,/** 进度条宽度 默认15  */
         progressBaseColor:Proptypes.string,/** 进度条底部颜色  */
-        progressColor:Proptypes.string,/** 进度条颜色  */
-        showProgress:Proptypes.bool,/** 是否显示进度  默认false */
+        progressColor:Proptypes.oneOfType([Proptypes.string,Proptypes.array]),/** 进度条颜色  */
         progress:Proptypes.number,/** 进度 */
         radius:Proptypes.number,/** 半径 */
         type:Proptypes.oneOf(['circle','fan']),/** 默认 default  */
+        children:Proptypes.node,/** 子试图 */
     }
 
     static defaultProps={
@@ -63,6 +64,7 @@ export default class ZFCirleProgressView extends Component {
         const {
 
         }=this.state;
+
         const {
            progress,
             strokeWidth,
@@ -72,10 +74,12 @@ export default class ZFCirleProgressView extends Component {
             type,
             radius,
             showProgress,
+            children,
         }=this.props;
-        const pathText = new Path()
-            .moveTo(10,30)
-            .lineTo(70,30);
+
+        if (progress < 0 || progress>1) {
+            throw new Error(' progress must >0 && <1');
+        }
 
         var width = radius * 2;
         return (
@@ -91,16 +95,30 @@ export default class ZFCirleProgressView extends Component {
                     />
                     <ZFWedeg
                         progress={progress}
-                        progressWidth={strokeWidth}
+                        progressWidth={type == 'circle'? strokeWidth:2}
                         progressColor={progressColor}
                         fillColor={progressColor}
                         fan={type == 'circle'? false:true}
                         radius={radius}
                     />
-                    {/*{*/}
-                        {/*type == "circle" && showProgress?<Text alignment="center"  strokeWidth={1}  stroke="orange" font={(radius / 2)+ "px"+" Heiti SC"} path={pathText} >{parseInt(progress*100)+"%"}</Text>:null*/}
-                    {/*}*/}
                 </Surface>
+                {
+                showProgress && type == 'circle'? <View style={{
+                        width: width,
+                        height: width,
+                        position:'absolute',
+                        justifyContent:'center',
+                        alignItems:'center'
+                    }}>
+                        {children ?children:
+                            <Text style={{
+                                color:progressColor,
+                                fontSize:parseInt(radius/2),
+                                textAlign:'center',
+                            }}>{parseInt(progress *100) +'%'}</Text>
+                        }
+                    </View>:null
+                }
             </View>
         );
     }

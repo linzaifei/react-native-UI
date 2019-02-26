@@ -4,7 +4,7 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
+    TouchableWithoutFeedback,
     Animated,
 } from 'react-native';
 
@@ -12,31 +12,14 @@ import PropTypes from 'prop-types'
 
 export default class ZFSwitch extends Component {
 
-    static calculateDimensions(size) {
-        switch (size) {
-            case 'small':
-                return ({
-                    width: 50, padding: 10, cercleWidth: 15, cercleHeight: 15, translateX: 22,
-                });
-            case 'large':
-                return ({
-                    width: 100, padding: 20, cercleWidth: 30, cercleHeight: 30, translateX: 38,
-                });
-            default:
-                return ({
-                    width: 50, padding: 15, cercleWidth: 23, cercleHeight: 23, translateX: 30,
-                });
-        }
-    }
-
     static propTypes = {
-        isOn: PropTypes.bool.isRequired,
-        label: PropTypes.string,
-        onColor: PropTypes.string.isRequired,
-        offColor: PropTypes.string.isRequired,
-        size: PropTypes.string,
-        labelStyle: PropTypes.object,
-        onToggle: PropTypes.func.isRequired
+        isOn: PropTypes.bool.isRequired,/** 开关状态 */
+        onColor: PropTypes.string.isRequired,/** 开关开启颜色 */
+        offColor: PropTypes.string.isRequired,/** 开关关闭颜色 */
+        size:PropTypes.oneOf(['small','medium','large']),/** 开关size */
+        type:PropTypes.oneOf(['circle','butt',]),/** 开关样式 */
+        tagEelement:PropTypes.element,/** 自定义中间图标 */
+        onToggle: PropTypes.func,/** 事件 */
     }
 
     static defaultProps = {
@@ -44,59 +27,146 @@ export default class ZFSwitch extends Component {
         onColor: '#634fc9',
         offColor: '#ecf0f1',
         size: 'medium',
-        labelStyle: {}
+        type:'circle',
     }
 
-    offsetX = new Animated.Value(0);
-    dimensions = ZFSwitch.calculateDimensions(this.props.size);
+    constructor(props){
+        super(props)
+        this.state={
+            transX: new Animated.Value(0),
+            isOn:this.props.isOn,
+        }
+    }
 
-    createToggleSwitchStyle = () => ({
-        justifyContent: 'center',
-        width: this.dimensions.width,
-        borderRadius: 20,
-        padding: this.dimensions.padding,
-        backgroundColor: (this.props.isOn) ? this.props.onColor : this.props.offColor,
-    })
+    componentDidMount(){
+        this.startAnimation()
+    }
 
-    createInsideCercleStyle = () => ({
-        margin: 4,
-        position: 'absolute',
-        backgroundColor: 'white',
-        transform: [{ translateX: this.offsetX }],
-        width: this.dimensions.cercleWidth,
-        height: this.dimensions.cercleHeight,
-        borderRadius: (this.dimensions.cercleWidth / 2),
-    });
+    shouldComponentUpdate(nextProps,nextState) {
+        // console.log('====nextState'+nextState.isOn)
+        // console.log('====state'+this.state.isOn)
+        if (nextState.isOn != this.state.isOn) {
+            // console.log('==== com'+this.state.isOn)
+            return false;
+        }
+        return true;
+    }
+
+
+
+    startAnimation(){
+        var self = this;
+        const {
+            transX,
+            isOn
+        }=self.state;
+        Animated.timing(transX,{
+            toValue:isOn?1:0,
+        }).start(()=>{
+            self.setState({
+                isOn:!isOn,
+            })
+        })
+    }
+
+    getSize(){
+        const{
+            size,
+        }=this.props;
+
+        var packageData = {};
+
+        switch (size){
+            case 'small':
+                packageData={
+                    bgWidth:50,
+                    bgHeight:25,
+                    tagSize:20,
+                    outputRange:[5,25],
+                }
+                break;
+            case 'medium':
+                packageData={
+                    bgWidth:55,
+                    bgHeight:30,
+                    tagSize:25,
+                    outputRange:[5,25],
+                }
+                break;
+            case 'large':
+                packageData={
+                    bgWidth:65,
+                    bgHeight:35,
+                    tagSize:30,
+                    outputRange:[5,30],
+                }
+                break;
+        }
+        return packageData;
+    }
+
+
+
 
     render() {
-        const toValue = this.props.isOn
-            ? this.dimensions.width - this.dimensions.translateX
-            : 0;
+        const{
+            offColor,
+            onColor,
+            onToggle,
+            tagEelement,
+            type,
+        }=this.props;
+        const {
+            transX,
+        }=this.state;
 
-        Animated.timing(
-            this.offsetX,
-            {
-                toValue,
-                duration: 300,
-            },
-        ).start();
+        // console.log('=====刷新界面了')
+
+        var packageData=this.getSize();
+
+
 
         return (
-            <View style={styles.container}>
-                {(this.props.label)
-                    ? <Text style={[styles.labelStyle, this.props.labelStyle]}>{this.props.label}</Text>
-                    : null
-                }
-                <TouchableOpacity
-                    style={this.createToggleSwitchStyle()}
-                    activeOpacity={0.8}
-                    onPress={() => {
-                        this.props.onToggle(!this.props.isOn);
-                    }}
-                >
-                    <Animated.View style={this.createInsideCercleStyle()} />
-                </TouchableOpacity>
-            </View>
+            <TouchableWithoutFeedback
+                onPress={() => {
+                    onToggle&& onToggle(this.state.isOn)
+                    this.startAnimation();
+                }}
+            >
+                <Animated.View style={[styles.container,{
+                    width:packageData.bgWidth,
+                    height:packageData.bgHeight,
+                    backgroundColor:transX.interpolate({
+                        inputRange:[0,1],
+                        outputRange:[offColor,onColor]
+                    }),
+                    borderRadius:type=='circle'?packageData.bgHeight/2.0:5,
+                }]}>
+                    <Animated.View style={[{
+                        width:packageData.tagSize,
+                        height:packageData.tagSize,
+                        borderRadius: type=='circle'?packageData.tagSize/2:5,
+                        backgroundColor:'#fff',
+                        alignItems:'center',
+                        justifyContent:'center',
+                        transform:[
+                            {
+                                translateX:transX.interpolate({
+                                    inputRange:[0,1],
+                                    outputRange:packageData.outputRange,
+                                })
+                            },{
+                                rotate:type=='circle'?transX.interpolate({
+                                    inputRange:[0,1],
+                                    outputRange:['0deg','360deg'],
+                                }):'0deg'
+                            }
+                        ]
+                    },styles.tag]} >
+                        {tagEelement}
+                    </Animated.View>
+                </Animated.View>
+            </TouchableWithoutFeedback>
         );
     }
 }
@@ -106,7 +176,6 @@ var styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    labelStyle: {
-        marginHorizontal: 10,
-    },
+
+
 });
