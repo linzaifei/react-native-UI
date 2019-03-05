@@ -4,6 +4,7 @@ import {
     StyleSheet,
     View,
     ART,
+    Text,
     ViewPropTypes,
 } from 'react-native';
 
@@ -14,9 +15,10 @@ const {
     Shape,
     Path,
     Group,
-    Text
+
 }=ART;
 
+import ZFLineView from './ZFLineView'
 
 export default class ZFLineProgressView extends Component {
 
@@ -25,8 +27,9 @@ export default class ZFLineProgressView extends Component {
         strokeCap:Proptypes.oneOf(['butt','round']),/** 进度条是直角还是圆角 默认圆角 round */
         strokeWidth:Proptypes.number,/** 进度条宽度 默认15  */
         progressBaseColor:Proptypes.string,/** 进度条底部颜色  */
-        progressColor:Proptypes.string,/** 进度条颜色  */
+        progressColor:Proptypes.oneOfType([Proptypes.string,Proptypes.array]),/** 进度条颜色  */
         showProgress:Proptypes.bool,/** 是否显示进度  默认false */
+        startLocation:Proptypes.number,/** 开始位置 */
         progress:Proptypes.number,/** 进度 */
     }
 
@@ -36,6 +39,7 @@ export default class ZFLineProgressView extends Component {
         progressBaseColor:'#ebeef5',
         progressColor:'#e54d42',
         showProgress:false,
+        startLocation:0,
     }
 
 
@@ -44,11 +48,22 @@ export default class ZFLineProgressView extends Component {
         this.state={
             width:100,
         }
+    }
 
+    shouldComponentUpdate(nextProps,nextState){
+        // console.log('nextStatewidth===='+nextState.width)
+        // console.log('width===='+this.state.width)
+        if (nextState.width == this.state.width){
+
+            return true;
+        }
+        return false
     }
 
 
+
     render() {
+
 
         const {
             strokeCap,
@@ -58,6 +73,7 @@ export default class ZFLineProgressView extends Component {
             progress,
             progressStyle,
             showProgress,
+            startLocation,
         }=this.props;
 
         const {
@@ -68,53 +84,45 @@ export default class ZFLineProgressView extends Component {
             throw new Error(' progress must >0 && <1');
         }
 
-
-
-        var startX = strokeCap=='butt'?0: strokeWidth/2.0;
-        var startY = strokeWidth/2.0;
+        // var pathText= new Path()
 
         var progressInstance = progress*width;
-
-        var basePath = new Path()
-                        .moveTo(startX,startY)
-                        .lineTo(width-startX,startY);
-        var subPath = new Path().moveTo(startX,startY).lineTo(progressInstance,startY)
-
-        const pathText = new Path()
-                        .moveTo(startX,startY)
-                        .lineTo(progressInstance,startY);
-
         return (
             <View style={{
                 ...progressStyle,
-                flex:1
+                flex:1,
             }} onLayout={(e)=>{
-                // console.log(e.nativeEvent.layout)
                 this.setState({
                     width:e.nativeEvent.layout.width,
                 })
             }} >
                 <Surface  width={width} height={strokeWidth} >
                     <Group>
-                        <Shape
-                            d={basePath}
-                            stroke={progressBaseColor}
+                        <ZFLineView
+                            progressColor={progressBaseColor}
                             strokeCap={strokeCap}
                             strokeWidth={strokeWidth}
+                            startLocation={0}
+                            endLocation={width - (strokeCap=='butt'?0: strokeWidth/2)}
                         />
-                        <Shape
-                            d={subPath}
-                            stroke={progressColor}
+                        <ZFLineView
+                            progressColor={progressColor}
                             strokeCap={strokeCap}
                             strokeWidth={strokeWidth}
+                            startLocation={0}
+                            endLocation={progressInstance}
                         />
-                        {
-                            showProgress?
-                                <Text alignment="center" x={progressInstance/2}   strokeWidth={1} stroke="#fff" font=" 10px Heiti SC" path={pathText} >{parseInt(progress*100)+"%"}</Text>:null
-                        }
                     </Group>
-
                 </Surface>
+                {
+                    showProgress ?<Text style={{
+                        fontSize:strokeWidth/3*2,
+                        color:'#fff',
+                        position:'absolute',
+                        left:progressInstance/2,
+                        top:0,
+                    }}>{parseInt(progress*100)+"%"}</Text>:null
+                }
             </View>
         );
     }

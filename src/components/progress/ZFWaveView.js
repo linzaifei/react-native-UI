@@ -162,7 +162,6 @@ export default class ZFWaveView extends Component {
         var reslut =`M${radius} ${radius*2} A${radius} ${radius} ${0} ${0} ${0} ${leftArr[0]} ${leftArr[1]}`
         reslut = reslut+ `M${radius} ${radius*2} A${radius} ${radius} ${0} ${0} ${1} ${rightArr[0]} ${rightArr[1]} `
 
-
         var path = new Path().close();
 
         //

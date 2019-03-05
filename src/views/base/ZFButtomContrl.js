@@ -32,13 +32,17 @@ export default class ZFButtomContrl extends Component {
         var list = []
         colorList.map((item,index)=>{
             list.push(
-                <ZFButtom btnStyle={{
+                <ZFButtom key={index} btnStyle={{
                     marginTop:5,
                     backgroundColor:hollow?'transparent':item.color
                 }} title={item.title} textStyle={{color:hollow?item.color:'#fff'}} hollow={hollow} />
             )
         })
         return list;
+    }
+
+    componentWillUnmount(){
+        console.log('======销毁了')
     }
 
 
@@ -193,10 +197,6 @@ export default class ZFButtomContrl extends Component {
                             </View>
                         </ZFButtom>
                     </View>
-
-
-
-
 
                 </ScrollView>
             </View>

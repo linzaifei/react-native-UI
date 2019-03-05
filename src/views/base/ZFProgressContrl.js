@@ -26,6 +26,10 @@ export default class ZFProgressContrl extends Component {
 
     }
 
+    componentWillUnmount(){
+        console.log('======销毁了')
+    }
+
 
     render() {
         return (
@@ -59,7 +63,7 @@ export default class ZFProgressContrl extends Component {
                            marginTop:1,
                        }}>
                            <ZFAnimationProgress progress={0.5} strokeCap="butt"  />
-                           <ZFAnimationProgress strokeWidth={11} progress={0.7} progressStyle={{marginTop:5}}  progressColor="#f37b1d" />
+                           <ZFAnimationProgress strokeWidth={11} progress={0.7} progressStyle={{marginTop:5}}  progressColor={['#f37b1d','#6739b6']} />
                            <ZFAnimationProgress strokeWidth={8} progress={0.4} progressStyle={{marginTop:5}}  progressColor="#6739b6" />
                        </View>
                    </View>
@@ -187,9 +191,9 @@ export default class ZFProgressContrl extends Component {
                            marginTop:1,
                            ...cusStyle.layout_row
                        }}>
-                           <ZFAnimationProgress type={'fan'}  showProgress={true} progress={0.8}   />
-                           <ZFAnimationProgress type={'fan'}   progressColor="#6739b6" radius={30}  progress={0.6}   />
-                           <ZFAnimationProgress  type={'fan'} progressColor="#f37b1d" radius={40}   progress={0.4}   />
+                           <ZFAnimationProgress type={'sector'}  showProgress={true} progress={0.8}   />
+                           <ZFAnimationProgress type={'sector'}   progressColor="#6739b6" radius={30}  progress={0.6}   />
+                           <ZFAnimationProgress  type={'sector'} progressColor="#f37b1d" radius={40}   progress={0.4}   />
 
                        </View>
                    </View>

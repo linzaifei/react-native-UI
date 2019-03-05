@@ -31,13 +31,14 @@ export default class ZFBase extends Component {
                 { title: '按钮', name: 'Button', color: 'pink', icon: 'ic_buttom' ,pushName:'buttomContrl'},
                 { title: '进度条', name: 'Progress', color: 'orange', icon: 'ic_jdt' ,pushName:'progressContrl'},
                 { title: '开关', name: 'Switch', color: 'purple', icon: 'ic_wenben' ,pushName:'switchContrl'},
-                { title: '头像', name: 'Avatar', color: 'red', icon: 'ic_tx' ,pushName:'buttomContrl'},
-                { title: '标签', name: 'Tag', color: 'brown', icon: 'ic_tag' ,pushName:'buttomContrl'},
-                { title: '加载', name: 'Loading', color: 'green', icon: 'ic_loadding' ,pushName:'buttomContrl'},
-                { title: '布局', name: 'Layout', color: 'cyan', icon: 'ic_layout' ,pushName:'buttomContrl'},
-                { title: '图标 ', name: 'Icon', color: 'midnightblue', icon: 'ic_tubiao' ,pushName:'buttomContrl'},
-                { title: '背景', name: 'Background', color: 'blue', icon: 'ic_beijing' ,pushName:'buttomContrl'},
-                { title: '边框阴影', name: 'Shadow', color: 'olive', icon: 'ic_bk' ,pushName:'buttomContrl'},
+                { title: '滑块', name: 'Slider', color: 'blue', icon: 'ic_beijing' ,pushName:'sliderContrl'},
+                { title: '加载', name: 'Loading', color: 'green', icon: 'ic_loadding' ,pushName:'loaddingContrl'},
+                { title: '步进器 ', name: 'Stepper', color: 'midnightblue', icon: 'ic_tubiao' ,pushName:'stepperContrl'},
+                { title: '倒计时', name: 'CountDown', color: 'olive', icon: 'ic_bk' ,pushName:'countdownContrl'},
+                // { title: '头像', name: 'Avatar', color: 'red', icon: 'ic_tx' ,pushName:'headerContrl'},
+                { title: '标签', name: 'Tag', color: 'brown', icon: 'ic_tag' ,pushName:'tagContrl'},
+                // { title: '布局', name: 'Layout', color: 'cyan', icon: 'ic_layout' ,pushName:'buttomContrl'},
+
             ],
         }
     }
@@ -71,13 +72,6 @@ export default class ZFBase extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-
-                {/*<BGIconAnimation />*/}
-                {/*<ZFBasePath />*/}
-                {/*<ZFButtom onPress={()=>{*/}
-                    {/*// this.titleView.startAnimation()*/}
-                {/*}}/>*/}
-                {/*<ZFTitleView ref={o=>this.titleView=o} />*/}
 
                 <ScrollView>
                     <View style={styles.icon}>

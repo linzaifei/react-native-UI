@@ -26,7 +26,9 @@ export default class ZFSwitchContrl extends Component {
         }
     }
 
-
+    componentWillUnmount(){
+        console.log('======销毁了')
+    }
 
     render() {
 
@@ -159,13 +161,13 @@ export default class ZFSwitchContrl extends Component {
                                     <Text style={{
                                         color:'#fff',
                                         fontSize:13,
-                                    }}>关</Text>
+                                    }}>开</Text>
                                 }
                                           rightView={
                                               <Text style={{
                                                   color:'#fff',
                                                   fontSize:13,
-                                              }}>开</Text>
+                                              }}>关</Text>
                                           }
                             />
                             <ZFAnimSwitch isOn={true} leftView={

@@ -9,14 +9,14 @@ import {
 } from 'react-native';
 
 import Proptypes from 'prop-types'
-import ZFWedeg from "./ZFWedeg";
+import ZFWedegView from "./ZFWedegView";
+
 
 
 const {
     Surface,
     Shape,
     Path,
-
 }=ART;
 
 export default class ZFCirleProgressView extends Component {
@@ -28,7 +28,7 @@ export default class ZFCirleProgressView extends Component {
         progressColor:Proptypes.oneOfType([Proptypes.string,Proptypes.array]),/** 进度条颜色  */
         progress:Proptypes.number,/** 进度 */
         radius:Proptypes.number,/** 半径 */
-        type:Proptypes.oneOf(['circle','fan']),/** 默认 default  */
+        type:Proptypes.oneOf(['circle','sector']),/** 默认 default  */
         children:Proptypes.node,/** 子试图 */
     }
 
@@ -87,18 +87,19 @@ export default class ZFCirleProgressView extends Component {
                 ...progressStyle,
             }}>
                 <Surface width={width} height={width}>
-                    <ZFWedeg
-                        progress={1}
+                    <ZFWedegView
+                        startAngle={0}
+                        endAngle={360}
                         progressWidth={strokeWidth}
                         progressColor={progressBaseColor}
                         radius={radius}
                     />
-                    <ZFWedeg
-                        progress={progress}
-                        progressWidth={type == 'circle'? strokeWidth:2}
+                    <ZFWedegView
+                        startAngle={0}
+                        endAngle={progress*360}
+                        progressWidth={strokeWidth}
                         progressColor={progressColor}
-                        fillColor={progressColor}
-                        fan={type == 'circle'? false:true}
+                        type={type}
                         radius={radius}
                     />
                 </Surface>

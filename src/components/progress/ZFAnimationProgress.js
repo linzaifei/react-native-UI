@@ -21,13 +21,13 @@ const AnimationWaveView = Animated.createAnimatedComponent(ZFWaveView);
 export default class ZFAnimationProgress extends Component {
 
     static propTypes={
-        type:Proptypes.oneOf(['line','circle','fan','wave']),/** 进度条类型 */
+        type:Proptypes.oneOf(['line','circle','sector','wave']),/** 进度条类型 */
         strokeCap:Proptypes.oneOf(['butt','round']),/** 进度条是直角还是圆角 默认圆角 round 用于条形进度条 */
 
         progressStyle:ViewPropTypes.style,/** 用于进度条表框样式 */
         strokeWidth:Proptypes.number,/** 进度条宽度 默认15  */
         progressBaseColor:Proptypes.string,/** 进度条底部颜色  */
-        progressColor:Proptypes.string,/** 进度条颜色  */
+        progressColor:Proptypes.oneOfType([Proptypes.string,Proptypes.array]),/** 进度条颜色  */
         showProgress:Proptypes.bool,/** 是否显示进度  默认false */
         progress:Proptypes.number,/** 进度 */
         radius:Proptypes.number,/** 半径 */
@@ -82,7 +82,7 @@ export default class ZFAnimationProgress extends Component {
 
         switch (type){
             case 'circle':
-            case 'fan':
+            case 'sector':
                 return (
                     <AnimatedCirleProgress {...self.props}  progress={progress1} />
                 );

@@ -15,9 +15,19 @@ import ZFBase from './views/base/ZFBase'
 import ZFButtomContrl from './views/base/ZFButtomContrl'
 import ZFProgressContrl from './views/base/ZFProgressContrl'
 import ZFSwitchContrl from './views/base/ZFSwitchContrl'
+import ZFSliderContrl from './views/base/ZFSliderContrl'
+import ZFStepperContrl from './views/base/ZFStepperContrl'
+import ZFCountdownContrl from './views/base/ZFCountdownContrl'
+import ZFLoaddingContrl from './views/base/ZFLoaddingContrl'
+import ZFHeaderContrl from './views/base/ZFHeaderContrl'
+import ZFTagContrl from './views/base/ZFTagContrl'
 
 
+
+/** 项目组件 */
 import ZFComponent from './views/component/ZFComponent'
+import ZFInputContrl from './views/component/ZFInputContrl'
+import ZFListContrl from './views/component/ZFListContrl'
 
 import ZFExpand from './views/expand/ZFExpand'
 import ZFAbout from './views/about/ZFAbout'
@@ -105,6 +115,33 @@ const subStack=createStackNavigator({
     switchContrl:{
         screen:ZFSwitchContrl,
     },
+    sliderContrl:{
+        screen:ZFSliderContrl,
+    },
+    countdownContrl:{
+        screen:ZFCountdownContrl,
+    },
+    stepperContrl:{
+        screen:ZFStepperContrl,
+    },
+    loaddingContrl:{
+        screen:ZFLoaddingContrl,
+    },
+    headerContrl:{
+        screen:ZFHeaderContrl,
+    },
+    tagContrl:{
+        screen:ZFTagContrl,
+    },
+
+    /** 项目组件 */
+    inputContrl:{
+        screen:ZFInputContrl,
+    },
+    listContrl:{
+        screen:ZFListContrl,
+    },
+
 
 })
 

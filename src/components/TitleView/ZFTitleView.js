@@ -20,7 +20,6 @@ export default class ZFTitleView extends Component {
         title:Proptypes.string,
         backgroundColor:Proptypes.string,
         textStyle:ViewPropTypes.style,
-
         children:Proptypes.element,/**  */
     }
     static defaultProps={
@@ -39,34 +38,42 @@ export default class ZFTitleView extends Component {
 
     }
 
-
+    shouldComponentUpdate(nextProps,nextState){
+        // console.log('=========nextState'+JSON.stringify(nextState))
+        return false;
+    }
 
     render() {
-        // console.log('========')
+        console.log('ZFTitleView========刷新')
         var self = this;
         const {
             textStyle,
             title,
             backgroundColor,
+            children,
         }=self.props;
 
         return (
             <View style={{
                 ...styles.container,
                 padding:10,
-                backgroundColor:'#fff'
+                backgroundColor:'#fff',
+                justifyContent:'space-around'
             }}>
                 <View style={styles.container}>
-                    <View style={[styles.tag,{backgroundColor}]}>
-
-                    </View>
+                    <View style={[styles.tag,{backgroundColor}]} />
                     <Text style={{
                         ...styles.textStyle,
                         ...textStyle,
                     }}>{title}</Text>
                 </View>
-
-
+                <View style={{
+                    flex:1,
+                    ...styles.container,
+                    justifyContent:'flex-end'
+                }}>
+                    {children}
+                </View>
             </View>
         );
     }
@@ -77,7 +84,7 @@ var styles = StyleSheet.create({
     container: {
         flexDirection:'row',
         alignItems:'center',
-
+        flex:1
     },
     textStyle:{
         color:'#666',
