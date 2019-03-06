@@ -24,7 +24,7 @@ export default class ZFComponent extends Component {
             elements: [
                 { title: '输入框', name: 'Input', color: '#f37b1d', icon: 'ic_buttom' ,pushName:'inputContrl'},
                 { title: '列表', name: 'List', color: '#39b54a', icon: 'ic_jdt' ,pushName:'listContrl'},
-                { title: '开关', name: 'Switch', color: '#1cbbb4', icon: 'ic_wenben' ,pushName:'switchContrl'},
+                { title: '卡片', name: 'Card', color: '#1cbbb4', icon: 'ic_wenben' ,pushName:'cardContrl'},
                 { title: '滑块', name: 'Slider', color: '#0081ff', icon: 'ic_beijing' ,pushName:'sliderContrl'},
                 { title: '加载', name: 'Loading', color: '#6739b6', icon: 'ic_loadding' ,pushName:'loaddingContrl'},
                 { title: '步进器 ', name: 'Stepper', color: '#9c26b0', icon: 'ic_tubiao' ,pushName:'stepperContrl'},

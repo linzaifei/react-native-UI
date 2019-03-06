@@ -28,6 +28,7 @@ import ZFTagContrl from './views/base/ZFTagContrl'
 import ZFComponent from './views/component/ZFComponent'
 import ZFInputContrl from './views/component/ZFInputContrl'
 import ZFListContrl from './views/component/ZFListContrl'
+import ZFCardContrl from './views/component/ZFCardContrl'
 
 import ZFExpand from './views/expand/ZFExpand'
 import ZFAbout from './views/about/ZFAbout'
@@ -141,6 +142,10 @@ const subStack=createStackNavigator({
     listContrl:{
         screen:ZFListContrl,
     },
+    cardContrl:{
+        screen:ZFCardContrl,
+    },
+
 
 
 })

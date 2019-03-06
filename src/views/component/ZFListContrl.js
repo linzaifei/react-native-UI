@@ -6,6 +6,8 @@ import {
     View,
     ScrollView,
     Animated,
+    TextInput,
+    SafeAreaView
 } from 'react-native';
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
 import ZFSelectItem from "../../viewconponent/selectItem/ZFSelectItem";
@@ -14,6 +16,10 @@ import ZFIconTag from "../../components/tag/ZFIconTag";
 import ZFButtom from "../../components/Buttom/ZFButtom";
 import ZFSwitch from "../../components/switch/ZFSwitch";
 import ZFsquare from "../../viewconponent/square/ZFsquare";
+import ZFSmalTag from "../../components/tag/ZFSmalTag";
+import ZFTag from "../../components/tag/ZFTag";
+import ZFMessage from "../../viewconponent/message/ZFMessage";
+import ZFMessageItem from "../../viewconponent/message/ZFMessageItem";
 
 
 export default class ZFListContrl extends Component {
@@ -31,12 +37,12 @@ export default class ZFListContrl extends Component {
         this.state={
             scale :new Animated.Value(0),
             list:[
-                'https://image.weilanwl.com/img/square-2.jpg',
-                'https://image.weilanwl.com/img/square-1.jpg',
-                'https://image.weilanwl.com/img/square-2.jpg',
-                'https://image.weilanwl.com/img/square-1.jpg',
-                'https://image.weilanwl.com/img/square-3.jpg',
-                'https://image.weilanwl.com/img/square-4.jpg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014827&di=efa20a8e9344920139c84e8350e78d55&imgtype=0&src=http%3A%2F%2Fimg.tukexw.com%2Fimg%2F7ed50eac2e2b4466.jpg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=b94ba89b82414798b9d2efcf26a6eeaf&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201504%2F25%2F20150425142538_BH3MZ.thumb.224_0.jpeg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=08e0d467050339b459451560972f6bfa&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fpic%2Fe%2Fdf%2F8b371622755_250_350.jpg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=c9ccf1d3dbaa14eaefcae5936934232f&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Flarge%2F85cccab3gw1etgx429jo1g20dw07yhcc.jpg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=ec6d30449dcd08e389f19036d612fd1b&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201606%2F29%2F20160629233156_wKx8N.thumb.224_0.jpeg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014825&di=c5833802c08bb32523862472460e9d02&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181004%2F17%2F1538645580-vpJwukOanA.gif',
             ],
             listArr:[
                 {
@@ -44,51 +50,76 @@ export default class ZFListContrl extends Component {
                     size:24,
                     color:'#6739b6',
                     text:'布局',
+                    tag:false,
+                    value:'0',
+                    type:'default',
                 },
                 {
                     name:'ic_beijing',
                     size:24,
                     color:'#0081ff',
-                    text:'背景'
+                    text:'背景',
+                    tag:true,
+                    value:'100',
+                    type:'tag',
                 },{
                     name:'ic_buttom',
                     size:24,
                     color:'#6739b6',
-                    text:'按钮'
+                    text:'按钮',
+                    tag:false,
+                    value:'0',
                 },{
                     name:'ic_tag',
                     size:24,
                     color:'#e03997',
-                    text:'图标'
+                    text:'图标',
+                    tag:true,
+                    value:'10',
+                    type:'tag',
                 },{
                     name:'ic_list',
                     size:24,
                     color:'#6739b6',
-                    text:'皮肤'
+                    text:'皮肤',
+                    tag:true,
+                    value:'0',
+                    type:'default',
                 },{
                     name:'ic_tx',
                     size:24,
-                    color:'#6739b6',
-                    text:'通知'
+                    color:'#a5673f',
+                    text:'通知',
+                    tag:false,
+                    value:'0',
+                    type:'default',
                 },{
                     name:'ic_bk',
                     size:24,
-                    color:'#6739b6',
-                    text:'布局'
+                    color:'#1cbbb4',
+                    text:'布局',
+                    tag:false,
+                    value:'0',
+                    type:'default',
                 },{
                     name:'ic_jdt',
                     size:24,
                     color:'#6739b6',
-                    text:'CVR'
+                    text:'CVR',
+                    tag:false,
+                    value:'0',
+                    type:'default',
                 },
-            ]
+            ],
+            space:0,
+            // content:4
         }
     }
 
     shouldComponentUpdate(nextProps,nextState){
 
-        console.log('nextState==='+nextState.list.length)
-        console.log('state==='+this.state.list.length)
+        // console.log('nextState==='+nextState.list.length)
+        // console.log('state==='+this.state.list.length)
         // if(nextState.content.length>=0){
         //     return false;
         // }
@@ -104,8 +135,15 @@ export default class ZFListContrl extends Component {
 
     render() {
         console.log('刷新')
+        var self = this;
+        const {
+            space,
+            listArr,
+            list,
+
+        }=self.state;
         return (
-            <View style={{
+            <SafeAreaView style={{
                 ...cusStyle.container,
             }}>
                 <ScrollView>
@@ -113,21 +151,71 @@ export default class ZFListContrl extends Component {
                     <View style={{
                         marginBottom:10,
                     }}>
-                        <ZFTitleView title='宫格' />
+                        <ZFTitleView title="宫格" >
+                            <ZFTag rightBottomView={
+                                <ZFSwitch isOn={false} type={'circle'} size={'small'} onToggle={(isOn)=>{
+                                    self.setState({
+                                        space:isOn?1:0,
+                                    })
+                                }} />
+                            } text="间距" textStyle={{
+                                fontSize:14,
+                                color:'#666',
+                                marginRight:10
+                            }} />
+
+                            {/*<ZFTag rightBottomView={*/}
+                               {/*<ZFButtom title="确定"  btnStyle={{*/}
+                                    {/*backgroundColor:'#6739b6',*/}
+                                   {/*borderRadius:30,*/}
+                               {/*}} textStyle={{*/}
+                                    {/*color:'#fff',*/}
+                                   {/*fontSize:13,*/}
+                               {/*}} onPress={()=>{*/}
+
+                                   {/*console.log(self.input.value)*/}
+                                   {/*// this.setState({*/}
+                                   {/*//     content:*/}
+                                   {/*// })*/}
+
+                               {/*}} />*/}
+                            {/*} leftTopView={*/}
+                                {/*<TextInput style={{*/}
+                                    {/*width:50,*/}
+                                    {/*height:26,*/}
+                                    {/*textAlign:'center',*/}
+                                    {/*borderWidth:1,*/}
+                                    {/*borderColor:'#6739b6',*/}
+                                    {/*marginRight:5*/}
+                                {/*}} placeholder="3-5" value={10} ref={o=>self.input=o}/>*/}
+                            {/*} />*/}
+                        </ZFTitleView>
                         <ZFsquare
-                            space={1}
+                            space={space}
                             count={4}
                             borderRadius={0}
-                            list={this.state.listArr}
+                            list={listArr}
+                            onClickItem={(index)=>{
+                                alert(index)
+                            }}
                             tabs={(item,index,width)=>{
+                                console.log(width)
                                 return(
                                     <View style={{
                                         width:width,
                                         height:width/3*2,
                                         backgroundColor:'#fff',
                                         alignItems:'center',
-                                        justifyContent:'center'
+                                        justifyContent:'center',
+                                        position:'relative'
                                     }}>
+                                        {
+                                            item.tag?<ZFSmalTag type={item.type} value={parseInt(item.value)>99?'99+':item.value} tagStyle={{
+                                                position:'relative',
+                                                top:8,
+                                                left:width,
+                                            }} />:null
+                                        }
                                         <ZFIconTag
                                             iconSize={24}
                                             iconName={item.name}
@@ -147,18 +235,15 @@ export default class ZFListContrl extends Component {
                     </View>
 
                     <ZFTitleView title="菜单列表" >
-                        <View style={{
-                            ...cusStyle.layout_row
-                        }}>
-                            <Text style={{
-                                fontSize:14,
-                                color:'#666',
-                                marginRight:10
-                            }}> 卡片效果</Text>
+                        <ZFTag rightBottomView={
                             <ZFSwitch isOn={false} type={'circle'} size={'small'} onToggle={(isOn)=>{
                                 this.startAnimation(isOn)
                             }} />
-                        </View>
+                        } text="卡片效果" textStyle={{
+                            fontSize:14,
+                            color:'#666',
+                            marginRight:10
+                        }} />
                     </ZFTitleView>
                     <Animated.View
 
@@ -324,11 +409,70 @@ export default class ZFListContrl extends Component {
                     }}>
                         <ZFTitleView title="消息类表" />
 
+                        <ZFMessageItem
+                            image={'https://image.weilanwl.com/img/square-1.jpg'}
+                            title="小林子"
+                            titleType={'group'}
+                            titleTag="6人"
+                            time="22.22"
+                            messageType={'no-message'}
+                            message={3}
+
+                        />
+
+                        <ZFMessageItem
+                            image={'https://image.weilanwl.com/img/square-1.jpg'}
+                            title="小林子"
+                            titleType={'group'}
+                            titleTag="SVIP"
+                            time="20.00"
+                            detailType={'envelope'}
+                            messageType={'no-notice'}
+                            boxStyle={{
+                             marginTop:1,
+                            }}
+                        />
+
+                        <ZFMessageItem
+                            image={'https://image.weilanwl.com/img/square-1.jpg'}
+                            title="小林子"
+                            time="20.00"
+                            detailType={'message'}
+                            detailText={{
+                                name:'我是小麦哦',
+                                message:'自己自定义吧，写不下去了'
+                            }}
+                            messageType={'message'}
+                            message={8}
+
+                            boxStyle={{
+                                marginTop:1,
+                                backgroundColor:'rgba(141,198,63,0.4)'
+                            }}
+                        />
+
+                    </View>
+
+                    <View style={{
+                        marginTop:10,
+                    }}>
+                        <ZFTitleView title="宫格图片选择" />
+                        <ZFsquare
+                            space={5}
+                            count={4}
+                            borderRadius={5}
+                            canAdd={true}
+                            list={list}
+                            onClickItem={(index)=>{
+                                alert(index)
+                            }}
+                        />
+
                     </View>
 
 
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 

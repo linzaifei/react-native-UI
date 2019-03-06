@@ -4,38 +4,27 @@ import {
     StyleSheet,
     Text,
     View,
-    Animated,
     ViewPropTypes,
-    ART,
 } from 'react-native';
 import Proptypes from 'prop-types'
 
-const {
-    Surface,
-    Shape,
-    Path,
-}=ART;
-
-// var AnimationShape = Animated.createAnimatedComponent(Shape)
 export default class ZFSmalTag extends Component {
 
     static propTypes={
-        backgroundColor:Proptypes.string,
-        type:Proptypes.oneOf(['horizontal','vertical','circle']),
-        line:Proptypes.number,
-        vLine:Proptypes.number,
+        type:Proptypes.oneOf('default','tag'),/** 标签样式 */
+        value:Proptypes.string,
+        tagStyle:ViewPropTypes.style,
+        textStyle:ViewPropTypes.style,
     }
 
     static defaultProps={
-        type:'circle',
-        line:10,
-        vLine:10
+        type:'default'
     }
 
     constructor(props) {
         super(props);
         this.state={
-            reat: new Animated.Value(0),
+
         }
     }
 
@@ -45,42 +34,51 @@ export default class ZFSmalTag extends Component {
 
     shouldComponentUpdate(nextProps,nextState){
 
-        return true
+        return false
     }
 
 
 
     render() {
+
         const {
-            reat
-        }=this.state;
-        const {
+            value,
+            tagStyle,
+            textStyle,
             type,
-            backgroundColor,
-            line,
-            vLine,
         }=this.props;
-
-
-        // var path = new Path()
-        //     .moveTo(10, 20)
-        //     .lineTo(line,20);
-
-        const path = new Path()
-            .moveTo(10,100)
-            .arc(80,150,50);
-
-        return (
-            <Surface width={300} height={300} style={{backgroundColor: 'yellow', marginTop: 10}}>
-
-                <Shape
-                    d={ path} stroke="black"
-                     // strokeWidth={vLine}
-                    // x={10}
-
-                />
-            </Surface>
-        );
+        if(type=='default'){
+            return (
+                <View style={{
+                    backgroundColor:'red',
+                    width:9,
+                    height:9,
+                    borderRadius:12,
+                    zIndex:100,
+                    ...tagStyle,
+                }}></View>
+            );
+        }else {
+            return (
+                <View style={{
+                    backgroundColor:'red',
+                    borderRadius:8,
+                    zIndex:100,
+                    paddingLeft:3,
+                    paddingRight:3,
+                    paddingTop:1,
+                    paddingBottom:1,
+                    ...tagStyle,
+                }}>
+                    <Text style={{
+                        fontSize:10,
+                        color:'#fff',
+                        ...textStyle,
+                        textAlign:'center',
+                    }}>{value}</Text>
+                </View>
+            );
+        }
     }
 
 }

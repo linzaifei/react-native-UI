@@ -13,11 +13,7 @@ import IconFont from  '../../Icon/IconFont'
 export default class ZFIconTag extends Component {
 
     static propTypes = {
-        boxStyle:ViewPropTypes.style,
-        textStyle:ViewPropTypes.style,
-        direction: PropTypes.oneOf(['left','right','top','bottom']),/** 开关状态 */
-        space:PropTypes.number,
-        text:PropTypes.string,
+        ...ZFTag.propTypes,
         iconName:PropTypes.string.isRequired,
         iconSize:PropTypes.number.isRequired,
         iconColor:PropTypes.string.isRequired,
