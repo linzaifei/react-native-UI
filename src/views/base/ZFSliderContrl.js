@@ -88,7 +88,7 @@ export default class ZFSliderContrl extends Component {
 
                         </View>
 
-                        <ZFSliderCirle />
+                        {/*<ZFSliderCirle /> */}
                     </View>
                 </ScrollView>
             </View>
