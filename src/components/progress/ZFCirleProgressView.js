@@ -5,7 +5,9 @@ import {
     View,
     ART,
     Text,
+    Animated,
     ViewPropTypes,
+    Easing,
 } from 'react-native';
 
 import Proptypes from 'prop-types'
@@ -19,6 +21,7 @@ const {
     Path,
 }=ART;
 
+const AnimWedegView = Animated.createAnimatedComponent(ZFWedegView)
 export default class ZFCirleProgressView extends Component {
 
     static propTypes={
@@ -28,6 +31,7 @@ export default class ZFCirleProgressView extends Component {
         progressColor:Proptypes.oneOfType([Proptypes.string,Proptypes.array]),/** 进度条颜色  */
         progress:Proptypes.number,/** 进度 */
         radius:Proptypes.number,/** 半径 */
+        showProgress:Proptypes.bool,
         type:Proptypes.oneOf(['circle','sector']),/** 默认 default  */
         children:Proptypes.node,/** 子试图 */
     }
@@ -46,23 +50,37 @@ export default class ZFCirleProgressView extends Component {
     constructor(props) {
         super(props);
         this.state={
-
+            progress1:new Animated.Value(0),
         }
     }
 
     componentDidMount(){
+        this.startAnimation()
+    }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.progress != this.props.progress) {
+            this.startAnimation();
+        }
+    }
+
+    startAnimation(){
+        this.state.progress1.setValue(0);
+        Animated.timing(this.state.progress1,{
+            toValue:1,
+            easeOut:Easing.linear()
+        }).start()
     }
 
     shouldComponentUpdate(nextProps,nextState){
-        return true
+        return false
     }
 
 
-
     render() {
+        console.log('ZFCirleProgressView====刷新了')
         const {
-
+            progress1,
         }=this.state;
 
         const {
@@ -94,13 +112,16 @@ export default class ZFCirleProgressView extends Component {
                         progressColor={progressBaseColor}
                         radius={radius}
                     />
-                    <ZFWedegView
-                        startAngle={0}
-                        endAngle={progress*360}
+                    <AnimWedegView
                         progressWidth={strokeWidth}
                         progressColor={progressColor}
                         type={type}
                         radius={radius}
+                        startAngle={0}
+                        endAngle={progress1.interpolate({
+                            inputRange:[0,1],
+                            outputRange:[0,progress*360],
+                        })}
                     />
                 </Surface>
                 {

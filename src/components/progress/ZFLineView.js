@@ -39,6 +39,7 @@ export default class ZFLineView extends Component {
 
     }
 
+
     render() {
         const {
             strokeCap,
@@ -48,8 +49,8 @@ export default class ZFLineView extends Component {
             endLocation,
         }=this.props;
 
-        if(startLocation >endLocation){
-            throw new Error(' 错误了==>开始距离大于技术距离了');
+        if(startLocation > endLocation){
+            throw new Error(' 错误了==>开始距离大于结束距离了');
         }
 
         var startX = strokeCap =='butt' ?0:strokeWidth/2;

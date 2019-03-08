@@ -90,7 +90,7 @@ export default class ZFLoaddingBar extends Component {
                })
            }}>
                <Surface width={width} height={strokeWidth} style={{}}>
-                   <AnimLineView {...this.props} progressColor={progressBaseColor} endLocation={width-strokeWidth/2} />
+                   <ZFLineView {...this.props} progressColor={progressBaseColor} endLocation={width-strokeWidth/2} />
                    <AnimLineView {...this.props} startLocation={startLocation.interpolate({
                        inputRange:[0,1],
                        outputRange:[-50,width]

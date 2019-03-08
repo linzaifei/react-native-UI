@@ -193,7 +193,7 @@ export default class ZFProgressContrl extends Component {
                        }}>
                            <ZFAnimationProgress type={'sector'}  showProgress={true} progress={0.8}   />
                            <ZFAnimationProgress type={'sector'}   progressColor="#6739b6" radius={30}  progress={0.6}   />
-                           <ZFAnimationProgress  type={'sector'} progressColor="#f37b1d" radius={40}   progress={0.4}   />
+                           <ZFAnimationProgress  type={'sector'} progressColor={['red','orange']} radius={40}   progress={0.4}   />
 
                        </View>
                    </View>

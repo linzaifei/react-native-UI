@@ -11,3 +11,4 @@ global.dddColor = '#ddd'
 
 global.btnColor = '#E85352'
 global.OrangeColor = 'orange'
+global.noColor='transparent'

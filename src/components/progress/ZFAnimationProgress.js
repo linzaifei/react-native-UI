@@ -14,10 +14,6 @@ import Proptypes from 'prop-types'
 import ZFCirleProgressView from './ZFCirleProgressView'
 import  ZFLineProgressView from './ZFLineProgressView'
 import ZFWaveView from './ZFWaveView'
-const AnimatedCirleProgress = Animated.createAnimatedComponent(ZFCirleProgressView);
-const AnimationLineProgress = Animated.createAnimatedComponent(ZFLineProgressView);
-const AnimationWaveView = Animated.createAnimatedComponent(ZFWaveView);
-
 export default class ZFAnimationProgress extends Component {
 
     static propTypes={
@@ -45,56 +41,31 @@ export default class ZFAnimationProgress extends Component {
 
     constructor(props){
         super(props)
-        this.state={
-            progress1:new Animated.Value(0),
-        }
+
     }
 
-    componentDidMount(){
-        this.startAnimation(this.props.progress)
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.progress != this.props.progress) {
-            this.startAnimation(nextProps.progress);
-        }
-    }
-
-    startAnimation(progress){
-        this.state.progress1.setValue(0);
-        Animated.parallel([
-            Animated.timing(this.state.progress1,{
-                toValue:progress,
-                easeOut:Easing.linear()
-            }),
-        ]).start()
-    }
 
     onGetProgressType(){
         var self = this;
         const {
             type,
-
         }=self.props;
-        const {
-            progress1,
-        }=self.state;
 
         switch (type){
             case 'circle':
             case 'sector':
                 return (
-                    <AnimatedCirleProgress {...self.props}  progress={progress1} />
+                    <ZFCirleProgressView {...self.props}/>
                 );
                 break;
             case 'wave':
                 return(
-                    <AnimationWaveView  {...self.props}  progress={progress1}  />
+                    <ZFWaveView  {...self.props}    />
                 )
                 break;
             default:
                 return (
-                    <AnimationLineProgress {...self.props} progress={progress1} />
+                    <ZFLineProgressView {...self.props}  />
                 );
                 break;
         }

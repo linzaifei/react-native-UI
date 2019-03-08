@@ -20,7 +20,9 @@ import ZFSmalTag from "../../components/tag/ZFSmalTag";
 import ZFTag from "../../components/tag/ZFTag";
 import ZFMessage from "../../viewconponent/message/ZFMessage";
 import ZFMessageItem from "../../viewconponent/message/ZFMessageItem";
+import ZFSwipeRow from "../../components/swipeRow/ZFSwipeRow";
 
+// import SwipeableRow from 'react-native/Libraries/Experimental/SwipeableRow/SwipeableRow'
 
 export default class ZFListContrl extends Component {
 
@@ -417,7 +419,6 @@ export default class ZFListContrl extends Component {
                             time="22.22"
                             messageType={'no-message'}
                             message={3}
-
                         />
 
                         <ZFMessageItem
@@ -450,6 +451,80 @@ export default class ZFListContrl extends Component {
                                 backgroundColor:'rgba(141,198,63,0.4)'
                             }}
                         />
+
+                    </View>
+
+                    <View style={{
+                        marginTop:10,
+                    }}>
+                        <ZFTitleView title="列表左滑"/>
+                        <ZFSwipeRow list={[
+                            {
+                                value:'删除',
+                                backgroundColor:'red',
+                            }
+                        ]} isOpen={true} >
+                            <ZFMessageItem
+                                image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                title="小林子"
+                                titleType={'group'}
+                                titleTag="6人"
+                                time="22.22"
+                                messageType={'no-message'}
+                                message={3}
+                            />
+                        </ZFSwipeRow>
+
+                        <ZFSwipeRow list={[
+                            {
+                                value:'删除',
+                                backgroundColor:'red',
+                            }
+                        ]} subComponent={(item)=>{
+                            return (
+                                <ZFIconTag
+                                    iconSize={20}
+                                    iconName="ic_del"
+                                    iconColor="#fff"
+                                    text="删除"
+                                    boxStyle={{backgroundColor:'transparent'}}
+                                    textStyle={{color:'#fff'}}
+                                />
+                            )
+                        }} >
+                            <ZFMessageItem
+                                image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                title="小林子"
+                                titleType={'group'}
+                                titleTag="6人"
+                                time="22.22"
+                                messageType={'no-message'}
+                                message={3}
+                            />
+                        </ZFSwipeRow>
+
+                        <ZFSwipeRow list={[
+                            {
+                                value:'置顶',
+                                backgroundColor:'grey',
+                            },
+                            {
+                                value:'删除',
+                                backgroundColor:'red',
+                            }
+                        ]} onClickItem={(index)=>{
+                            alert(index)
+                        }} >
+                            <ZFMessageItem
+                                image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                title="小林子"
+                                titleType={'group'}
+                                titleTag="6人"
+                                time="22.22"
+                                messageType={'no-message'}
+                                message={3}
+                            />
+                        </ZFSwipeRow>
 
                     </View>
 

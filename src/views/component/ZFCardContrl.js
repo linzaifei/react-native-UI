@@ -6,6 +6,7 @@ import {
     View,
     ScrollView,
     Animated,
+    SafeAreaView,
 } from 'react-native';
 import ZFInput from "../../viewconponent/input/ZFInput";
 
@@ -15,6 +16,7 @@ import ZFButtom from "../../components/Buttom/ZFButtom";
 import ZFCard from "../../viewconponent/card/ZFCard";
 import ZFActionCard from "../../viewconponent/card/ZFActionCard";
 import ZFSwitch from "../../components/switch/ZFSwitch";
+import ZFStoryCard from "../../viewconponent/card/ZFStoryCard";
 
 export default class ZFCardContrl extends Component {
 
@@ -64,7 +66,7 @@ export default class ZFCardContrl extends Component {
             action,
         }=this.state;
         return (
-            <View style={{
+            <SafeAreaView style={{
                 ...cusStyle.container,
             }}>
 
@@ -99,7 +101,6 @@ export default class ZFCardContrl extends Component {
                             }} />
                         </ZFTitleView>
                         <ZFActionCard
-
                             image="https://image.weilanwl.com/img/square-4.jpg"
                             title="小猫咪"
                             detail="2018-10-20"
@@ -119,35 +120,32 @@ export default class ZFCardContrl extends Component {
                                 borderRadius:55/2.0,
                             }}
                         />
+                    </View>
 
-                        {/*<ZFActionCard*/}
-
-                            {/*image="https://image.weilanwl.com/img/square-4.jpg"*/}
-                            {/*title="小猫咪"*/}
-                            {/*detail="2018-10-20"*/}
-                            {/*content="中国是世界四大文明古国之一，也是现仅存的文明古国，连续性五千年的文化传播"*/}
-                            {/*list={['https://image.weilanwl.com/img/square-4.jpg']}*/}
-                            {/*zan={5}*/}
-                            {/*msg={20}*/}
-                            {/*look={40}*/}
-                            {/*cardStyle={{*/}
-                                {/*margin:10,*/}
-                                {/*borderRadius:8,*/}
-                            {/*}}*/}
-                            {/*cardHeaderStyle={{*/}
-                                {/*marginBottom:5,*/}
-                            {/*}}*/}
-                            {/*imgStyle={{*/}
-                                {/*borderRadius:55/2.0,*/}
-                            {/*}}*/}
-                        {/*/>*/}
-
+                    <View>
+                        <ZFTitleView title="故事类卡片" />
+                        <ZFStoryCard
+                            image="https://image.weilanwl.com/img/square-4.jpg"
+                            title="中国是世界四大文明古国之一"
+                            content="中国是世界四大文明古国之一，也是现仅存的文明古国，连续性五千年的文化传播，"
+                            tags={[{
+                                value:'中国文化',
+                                color:'#e54d42',
+                                bgColor:'rgba(229,77,66,0.2)',
+                                size:12,
+                            },{
+                                value:'文明古国',
+                                color:'#39b54a',
+                                bgColor:'rgba(57,181,74,0.2)',
+                                size:12,
+                            }]}
+                        />
                     </View>
 
 
                 </ScrollView>
 
-            </View>
+            </SafeAreaView>
         );
     }
 

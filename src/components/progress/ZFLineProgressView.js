@@ -6,20 +6,21 @@ import {
     ART,
     Text,
     ViewPropTypes,
+    Animated,
+    Easing,
 } from 'react-native';
 
 import Proptypes from 'prop-types'
+import ZFLineView from './ZFLineView'
 
 const {
     Surface,
     Shape,
     Path,
     Group,
-
 }=ART;
 
-import ZFLineView from './ZFLineView'
-
+const AnimLineView = Animated.createAnimatedComponent(ZFLineView)
 export default class ZFLineProgressView extends Component {
 
     static propTypes={
@@ -31,6 +32,8 @@ export default class ZFLineProgressView extends Component {
         showProgress:Proptypes.bool,/** 是否显示进度  默认false */
         startLocation:Proptypes.number,/** 开始位置 */
         progress:Proptypes.number,/** 进度 */
+        subWidth:Proptypes.number,/** 自定义宽度 */
+        endLocation:Proptypes.number,/** 自定义结束位置 */
     }
 
     static defaultProps={
@@ -40,6 +43,8 @@ export default class ZFLineProgressView extends Component {
         progressColor:'#e54d42',
         showProgress:false,
         startLocation:0,
+        subWidth:0,
+        endLocation:0,
     }
 
 
@@ -47,24 +52,44 @@ export default class ZFLineProgressView extends Component {
         super(props);
         this.state={
             width:100,
+            progress1:new Animated.Value(0),
         }
+
     }
 
     shouldComponentUpdate(nextProps,nextState){
-        // console.log('nextStatewidth===='+nextState.width)
+        // console.log('nextStatewidth===='+JSON.stringify(nextState))
+        // console.log('nextProps===='+JSON.stringify(nextProps))
         // console.log('width===='+this.state.width)
-        if (nextState.width == this.state.width){
-
+        // console.log('width===='+nextState.width)
+        if (nextState.width != this.state.width){
             return true;
         }
         return false
     }
 
+    componentDidMount(){
+        this.startAnimation()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.progress != this.props.progress) {
+            this.startAnimation();
+        }
+    }
+
+    startAnimation(){
+        this.state.progress1.setValue(0);
+        Animated.timing(this.state.progress1,{
+            toValue:1,
+            easeOut:Easing.linear()
+        }).start()
+    }
+
 
 
     render() {
-
-
+        console.log('ZFLineProgressView======刷新界面')
         const {
             strokeCap,
             strokeWidth,
@@ -73,44 +98,51 @@ export default class ZFLineProgressView extends Component {
             progress,
             progressStyle,
             showProgress,
-            startLocation,
+            subWidth,
+            endLocation,
         }=this.props;
 
         const {
             width,
+            progress1,
         }=this.state;
 
-        if (progress < 0 || progress>1) {
+        if (endLocation==0 && (progress < 0 || progress>1)) {
             throw new Error(' progress must >0 && <1');
         }
 
-        // var pathText= new Path()
+        var relWidth = subWidth!=0 ?subWidth:width;
+        var progressInstance = endLocation!=0 ?endLocation: progress*relWidth;
 
-        var progressInstance = progress*width;
         return (
             <View style={{
                 ...progressStyle,
                 flex:1,
             }} onLayout={(e)=>{
-                this.setState({
-                    width:e.nativeEvent.layout.width,
-                })
+                if(subWidth==0){
+                    this.setState({
+                        width:e.nativeEvent.layout.width,
+                    })
+                }
             }} >
-                <Surface  width={width} height={strokeWidth} >
+                <Surface  width={relWidth} height={strokeWidth} >
                     <Group>
                         <ZFLineView
                             progressColor={progressBaseColor}
                             strokeCap={strokeCap}
                             strokeWidth={strokeWidth}
                             startLocation={0}
-                            endLocation={width - (strokeCap=='butt'?0: strokeWidth/2)}
+                            endLocation={relWidth - (strokeCap=='butt'?0: strokeWidth/2)}
                         />
-                        <ZFLineView
+                        <AnimLineView
                             progressColor={progressColor}
                             strokeCap={strokeCap}
                             strokeWidth={strokeWidth}
                             startLocation={0}
-                            endLocation={progressInstance}
+                            endLocation={progress1.interpolate({
+                                inputRange:[0,1],
+                                outputRange:[0,progressInstance]
+                            })}
                         />
                     </Group>
                 </Surface>
