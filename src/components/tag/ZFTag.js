@@ -119,7 +119,7 @@ export default class ZFTag extends Component {
         let layout = (direction=='left' || direction=='right')
         let dirc = (direction=='left' || direction=='top')
         return (
-            <View style={[styles.container,layout?styles.layout_row:styles.layout_column,boxStyle]}>
+            <View style={[styles.container,boxStyle,layout?styles.layout_row:styles.layout_column,]}>
                 {
                     dirc ? leftTopView?leftTopView: this.getText() : null
                 }

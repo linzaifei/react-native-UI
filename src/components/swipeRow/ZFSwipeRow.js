@@ -209,6 +209,7 @@ var styles = StyleSheet.create({
         alignItems:'center',
         backgroundColor: '#F5FCFF',
         width: '100%',
+        overflow:'hidden'
     },
     subTagStyle:{
         height:'100%',

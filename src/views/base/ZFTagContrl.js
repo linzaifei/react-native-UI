@@ -10,6 +10,7 @@ import {
 import ZFTag from "../../components/tag/ZFTag";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
 import IconFont from '../../Icon/IconFont'
+import ZFCapsule from "../../components/tag/ZFCapsule";
 
 export default class ZFTagContrl extends Component {
 
@@ -164,6 +165,71 @@ export default class ZFTagContrl extends Component {
                                         paddingRight:10,
 
                                     }}
+                            />
+
+
+                        </View>
+                    </View>
+
+                    <View style={{
+                        marginTop:10
+                    }}>
+                        <ZFTitleView title="标签边框" />
+
+                        <View style={{
+                            ...cusStyle.layout_row,
+                            padding:10,
+                            backgroundColor:'#fff',
+                            marginTop:1,
+                            justifyContent:'space-around'
+                        }}>
+
+
+                            <ZFCapsule
+                                leftValue="说明"
+                                rightValue="12"
+                                width={80}
+
+                            />
+                            <ZFCapsule
+                                leftValue="+86"
+                                rightValue="123456"
+                                cap={'round'}
+                                width={120}
+                            />
+
+
+                        </View>
+                    </View>
+                    <View style={{
+                        marginTop:10
+                    }}>
+                        <ZFTitleView title="标签边框" />
+
+                        <View style={{
+                            ...cusStyle.layout_row,
+                            padding:10,
+                            backgroundColor:'#fff',
+                            marginTop:1,
+                            justifyContent:'space-around'
+                        }}>
+
+
+                            <ZFCapsule
+                                name="ic_store"
+                                rightValue="12"
+                                size={13}
+                                color="#e54d42"
+                                type={'icon'}
+                                width={80}
+                            />
+                            <ZFCapsule
+                                name="ic_store"
+                                rightValue="12"
+                                size={13}
+                                type={'icon'}
+                                cap={'round'}
+                                width={80}
                             />
 
 

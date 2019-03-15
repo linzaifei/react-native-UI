@@ -29,6 +29,9 @@ import ZFComponent from './views/component/ZFComponent'
 import ZFInputContrl from './views/component/ZFInputContrl'
 import ZFListContrl from './views/component/ZFListContrl'
 import ZFCardContrl from './views/component/ZFCardContrl'
+import ZFBarContrl from  './views/component/ZFBarContrl'
+import ZFTimelineContrl from './views/component/ZFTimelineContrl'
+import  ZFSwiperContrl from './views/component/ZFSwiperContrl'
 
 import ZFExpand from './views/expand/ZFExpand'
 import ZFAbout from './views/about/ZFAbout'
@@ -39,7 +42,10 @@ import ZFAbout from './views/about/ZFAbout'
 
 
 import {createAppContainer,createStackNavigator,createBottomTabNavigator} from 'react-navigation'
+// import ZFTabBarComponent from "./viewconponent/bar/ZFTabBarComponent";
 
+
+import {BottomTabBar} from 'react-navigation-tabs'
 
 
 const TabOptions = (tabBarTitle,normalImage,selectedImage) => {
@@ -70,6 +76,12 @@ const IndexStack= createBottomTabNavigator({
         }),
         navigationOptions:()=> TabOptions("组件",'ic_tabbar_component_sel','ic_tabbar_component'),
     },
+    // TComp:{
+    //     screen:createStackNavigator({
+    //         ZFComponent
+    //     }),
+    //     navigationOptions:()=> null,
+    // },
     Expand:{
         screen:createStackNavigator({
             ZFExpand
@@ -83,6 +95,9 @@ const IndexStack= createBottomTabNavigator({
         navigationOptions:()=> TabOptions("关于",'ic_tabbar_about_sel','ic_tabbar_about'),
     },
 },{
+
+
+
     tabBarOptions:{
         activeTintColor:defaultColor,
         inactiveTintColor:smColor,
@@ -103,6 +118,7 @@ const IndexStack= createBottomTabNavigator({
     animationEnabled:false,
     backBehavior:'none',
     headerMode: 'none',
+    // tabBarComponent:props => <ZFTabBarComponent {...props} />,
 })
 
 const subStack=createStackNavigator({
@@ -145,7 +161,15 @@ const subStack=createStackNavigator({
     cardContrl:{
         screen:ZFCardContrl,
     },
-
+    barContrl:{
+        screen:ZFBarContrl,
+    },
+    timelineContrl:{
+        screen:ZFTimelineContrl,
+    },
+    swiperContrl:{
+        screen:ZFSwiperContrl,
+    },
 
 
 })

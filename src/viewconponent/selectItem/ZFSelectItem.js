@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types'
 import ZFTag from "../../components/tag/ZFTag";
+import ZFInputView from "../../components/inputView/ZFInputView";
 
 export default class ZFSelectItem extends Component {
 
@@ -79,8 +80,8 @@ export default class ZFSelectItem extends Component {
 
         if (editable){
             return (
-                <TextInput
-                    style={{
+                <ZFInputView
+                    inputStyle={{
                         flex:1,
                         textAlign:'right',
                         fontSize,
@@ -92,11 +93,11 @@ export default class ZFSelectItem extends Component {
                     editable={editable}
                     maxLength={maxLength}
                     keyboardType={keyboardType}
-                    underlineColorAndroid={'transparent'}
                     onChangeText={(event)=>{
                         onChangeText && onChangeText(event)
                     }}
                 />
+
             )
         }else {
             return(

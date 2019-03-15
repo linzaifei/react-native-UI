@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import PropTypes from 'prop-types'
+import ZFInputView from "../../components/inputView/ZFInputView";
 
 export default class ZFInput extends Component {
 
@@ -22,17 +23,19 @@ export default class ZFInput extends Component {
         inputStyle:ViewPropTypes.style,/** input样式 */
         image:PropTypes.oneOfType([PropTypes.string,PropTypes.number]).isRequired,
         imageH:PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
-        placeholder:PropTypes.string,/** 占位符 */
-        placeholderTextColor:PropTypes.string,/** 占位符颜色 */
-        maxLength:PropTypes.number,/** 输入字符最大个数 */
-        returnKeyType:PropTypes.oneOf(['done','go','next','search','send']),/** 键盘样式 */
-        keyboardType:PropTypes.oneOf(['default','number-pad','decimal-pad','numeric','email-address','phone-pad',]),/** 键盘类型 */
-        secureTextEntry:PropTypes.bool,/** 是否显示 默认 false */
+        ...ZFInputView.propTypes,
+
+        // placeholder:PropTypes.string,/** 占位符 */
+        // placeholderTextColor:PropTypes.string,/** 占位符颜色 */
+        // maxLength:PropTypes.number,/** 输入字符最大个数 */
+        // returnKeyType:PropTypes.oneOf(['done','go','next','search','send']),/** 键盘样式 */
+        // keyboardType:PropTypes.oneOf(['default','number-pad','decimal-pad','numeric','email-address','phone-pad',]),/** 键盘类型 */
+        // secureTextEntry:PropTypes.bool,/** 是否显示 默认 false */
+        // defaultValue:PropTypes.string,/** 默认value */
+        // editable:PropTypes.bool,/** 是否可以编辑 默认可以*/
+        // onChangeText:PropTypes.func,/** 回调输入文字*/
         animation:PropTypes.bool,/** 是否需要动画 默认true */
         rightView:PropTypes.element,/** 右试图 */
-        defaultValue:PropTypes.string,/** 默认value */
-        editable:PropTypes.bool,/** 是否可以编辑 默认可以*/
-        onChangeText:PropTypes.func,/** 回调输入文字*/
         showIcon:PropTypes.bool,/** 展示icon */
         lable:PropTypes.element,
         lableSel:PropTypes.element,
@@ -179,16 +182,9 @@ export default class ZFInput extends Component {
             boxStyle,
             inputStyle,
             image,
-            placeholder,
-            placeholderTextColor,
-            secureTextEntry,
             rightView,
-            defaultValue,
-            editable,
-            maxLength,
             onChangeText,
             showIcon,
-            keyboardType,
         }=self.props;
 
         if(!image&& !showIcon){
@@ -202,16 +198,13 @@ export default class ZFInput extends Component {
                 ...styles.container,
             }}>
                 {this.leftView()}
-                <TextInput
-                    style={[{...inputStyle},styles.input]}
-                    placeholder={placeholder}
-                    placeholderTextColor={placeholderTextColor}
-                    secureTextEntry={secureTextEntry}
-                    defaultValue={defaultValue}
-                    editable={editable}
-                    maxLength={maxLength}
-                    keyboardType={keyboardType}
-                    underlineColorAndroid={'transparent'}
+
+                <ZFInputView
+                    inputStyle={{
+                        ...inputStyle,
+                        ...styles.input,
+                    }}
+                    {...this.props}
                     onFocus={()=>{
                         self.startAnimation()
                     }}

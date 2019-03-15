@@ -14,15 +14,16 @@ export default class ZFIconTag extends Component {
 
     static propTypes = {
         ...ZFTag.propTypes,
-        iconName:PropTypes.string.isRequired,
-        iconSize:PropTypes.number.isRequired,
-        iconColor:PropTypes.string.isRequired,
+        name:PropTypes.string,
+        size:PropTypes.number,
+        color:PropTypes.string,
+        rightStyle:ViewPropTypes.style,
     }
 
     static defaultProps = {
         direction:'right',
         space:5,
-        iconSize:25,
+        size:25,
     }
 
     shouldComponentUpdate(nextProps,nextState){
@@ -31,17 +32,25 @@ export default class ZFIconTag extends Component {
     }
     render() {
         const {
-            iconName,
-            iconSize,
-            iconColor,
+            name,
+            size,
+            color,
+            rightStyle,
         }=this.props;
         return (
-            <ZFTag {...this.props} rightBottomView={
-                <IconFont
-                    name={iconName}
-                    size={iconSize}
-                    color={iconColor}
-                />} />
+            <ZFTag {...this.props}
+                   rightBottomView={
+                       <View style={{
+                           ...rightStyle
+                       }}>
+                           <IconFont
+                               name={name}
+                               size={size}
+                               color={color}
+                           />
+                       </View>
+                   }
+            />
         );
     }
 

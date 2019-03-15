@@ -84,9 +84,9 @@ export default class ZFMessageItem extends Component {
             case 'envelope':
                 return(
                     <ZFIconTag
-                        iconName= {detailType == 'error'?"ic_tishi":'ic_hongbao'}
-                        iconSize={12}
-                        iconColor="#e54d42"
+                        name= {detailType == 'error'?"ic_tishi":'ic_hongbao'}
+                        size={12}
+                        color="#e54d42"
                         text= {detailType=='error'?"消息未发出":'收到红包'}
                         boxStyle={{
                             backgroundColor:'transparent',

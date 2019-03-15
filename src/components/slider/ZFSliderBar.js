@@ -19,8 +19,10 @@ const {
 }=ART;
 
 import ZFLineView from "../progress/ZFLineView";
+import ZFDrawText from "./ZFDrawText";
 
 const AnimLineView = Animated.createAnimatedComponent(ZFLineView)
+const AnimDrawText= Animated.createAnimatedComponent(ZFDrawText)
 export default class ZFSliderBar extends Component {
 
     static propTypes= {
@@ -88,6 +90,7 @@ export default class ZFSliderBar extends Component {
             onValueChange,
             disabled,
             maximumValue,
+            strokeWidth,
         }=this.props;
 
         if(!disabled){
@@ -95,7 +98,7 @@ export default class ZFSliderBar extends Component {
                 this.noteX = sliderX._value;
             }
             /** 向右滑动值小于0 最大值为最右边 0 */
-            let scrollX = Math.min(Math.max(this.noteX + dx, 1),width-10)
+            let scrollX = Math.min(Math.max(this.noteX + dx, 1),width-strokeWidth)
             // console.log('scrollX====='+scrollX)
             var value = (scrollX / parseFloat(width-10)).toFixed(2) * maximumValue;
             onValueChange&&onValueChange(value);
@@ -190,7 +193,14 @@ export default class ZFSliderBar extends Component {
                         }
                     ]
                 }} {...this._panResponder.panHandlers}>
-                    {children}
+                    {
+                        children?children:
+                            <AnimDrawText value={sliderX.interpolate({
+                            inputRange:[0,width-strokeWidth],
+                            outputRange:[0,100],
+                        })} />
+                    }
+
                 </Animated.View>
             </View>
         );

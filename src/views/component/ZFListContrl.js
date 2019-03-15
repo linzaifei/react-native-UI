@@ -219,9 +219,9 @@ export default class ZFListContrl extends Component {
                                             }} />:null
                                         }
                                         <ZFIconTag
-                                            iconSize={24}
-                                            iconName={item.name}
-                                            iconColor={item.color}
+                                            size={24}
+                                            name={item.name}
+                                            color={item.color}
                                             text={item.text}
                                             direction={'bottom'}
                                             textStyle={{
@@ -285,9 +285,9 @@ export default class ZFListContrl extends Component {
                         />
 
                         <ZFSelectIcon
-                            iconName="ic_layout"
-                            iconSize={25}
-                            iconColor="#39b54a"
+                            name="ic_layout"
+                            size={25}
+                            color="#39b54a"
                             text="图标+汉字"
                             itemStyle={{
                                 marginTop:1
@@ -327,9 +327,9 @@ export default class ZFListContrl extends Component {
                         />
 
                         <ZFSelectIcon
-                            iconName="ic_wenben"
-                            iconSize={25}
-                            iconColor="#9c26b0"
+                            name="ic_wenben"
+                            size={25}
+                            color="#9c26b0"
                             text="文本"
                             canArrow={false}
                             defaultValue="这是一小段文字"
@@ -340,9 +340,9 @@ export default class ZFListContrl extends Component {
 
 
                         <ZFSelectIcon
-                            iconName="ic_beijing"
-                            iconSize={25}
-                            iconColor="#f37b1d"
+                            name="ic_beijing"
+                            size={25}
+                            color="#f37b1d"
                             text="开关"
                             canArrow={false}
                             centerView={
@@ -358,9 +358,9 @@ export default class ZFListContrl extends Component {
                             leftView={
                                 <View>
                                     <ZFIconTag
-                                        iconName="ic_buttom"
-                                        iconColor="#f37b1d"
-                                        iconSize={25}
+                                        name="ic_buttom"
+                                        color="#f37b1d"
+                                        size={25}
                                         text="多行Item"
                                     />
                                     <Text style={{
@@ -483,9 +483,9 @@ export default class ZFListContrl extends Component {
                         ]} subComponent={(item)=>{
                             return (
                                 <ZFIconTag
-                                    iconSize={20}
-                                    iconName="ic_del"
-                                    iconColor="#fff"
+                                    size={20}
+                                    name="ic_del"
+                                    color="#fff"
                                     text="删除"
                                     boxStyle={{backgroundColor:'transparent'}}
                                     textStyle={{color:'#fff'}}

@@ -19,6 +19,7 @@ export default class ZFButtom extends Component {
         title:Proptypes.string,/** 标题 */
         disabled:Proptypes.bool,/** 是否可以点击 默认false 可以点击 */
         hollow:Proptypes.bool,/** 是否为镂空 默认false */
+        animation:Proptypes.bool,/** 动画 默认true */
         onPress:Proptypes.func,/** 点击事件 */
         onLongPress:Proptypes.func,/** 长按事件 */
         children:Proptypes.node,/**  */
@@ -26,6 +27,7 @@ export default class ZFButtom extends Component {
 
     static defaultProps={
         disabled:false,
+        animation:true,
     }
 
     constructor(props) {
@@ -45,10 +47,11 @@ export default class ZFButtom extends Component {
             transform,
         }=this.state;
         const {
-            disabled
+            disabled,
+            animation,
         }=this.props
 
-        if (disabled)return;
+        if (disabled || !animation)return;
 
         Animated.timing(transform,{
             toValue:(1,1),
@@ -61,9 +64,10 @@ export default class ZFButtom extends Component {
             transform,
         }=this.state;
         const {
-            disabled
+            disabled,
+            animation,
         }=this.props
-        if (disabled)return;
+        if (disabled||!animation)return;
         Animated.timing(transform,{
             toValue:(0,0),
             duration:100
@@ -141,6 +145,7 @@ export default class ZFButtom extends Component {
 
 var styles = StyleSheet.create({
     container: {
+        flexDirection:'row',
         backgroundColor:'#F0F0F0',
         paddingTop:6,
         paddingBottom:6,
