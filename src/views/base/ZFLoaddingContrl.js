@@ -5,6 +5,7 @@ import {
     Text,
     View,
     ScrollView,
+    SafeAreaView
 } from 'react-native';
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
 import ZFLoaddingCircle from "../../components/loadding/ZFLoaddingCircle";
@@ -30,7 +31,7 @@ export default class ZFLoaddingContrl extends Component {
 
     render() {
         return (
-            <View style={cusStyle.container}>
+            <SafeAreaView style={cusStyle.container}>
                 <ScrollView>
                     <View>
                         <ZFTitleView title="加载样式一" />
@@ -89,7 +90,7 @@ export default class ZFLoaddingContrl extends Component {
 
 
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 

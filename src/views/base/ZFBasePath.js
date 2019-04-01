@@ -14,10 +14,7 @@ import {
 //     Surface, Path, Group, Shape
 // } = ART;
 
-import Svg,{
-    G,
-    Path,
-} from 'react-native-svg'
+
 
 const scale = Platform.isTV ? 4 : 1;
 export default class ZFBasePath extends Component {
@@ -103,16 +100,7 @@ export default class ZFBasePath extends Component {
                     {/*</Group>*/}
                 {/*</Surface>*/}
 
-                <Svg
-                    width="300"
-                    height="400"
-                >
-                    <G fill="none" stroke="#3d5875">
-                        <Path strokeLinecap="round" strokeWidth="8" d="M5 8 l215 0" />
-                    </G>
 
-
-                </Svg>
 
 
             </View>

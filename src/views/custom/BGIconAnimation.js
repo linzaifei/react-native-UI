@@ -8,14 +8,11 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import Svg,{
-    G,
-    Path,
-}from 'react-native-svg'
 
 
-// 注意要用 Animated.createAnimatedComponent 让组件可动画化
-let AnimatePath = Animated.createAnimatedComponent(Path);
+
+
+
 
 export default class BGIconAnimation extends Component {
 
@@ -47,29 +44,7 @@ export default class BGIconAnimation extends Component {
             <TouchableWithoutFeedback
                 onPress={this.changeStroke}
             >
-                <Svg
-                    height="100"
-                    width="100"
-                >
 
-                    <Path
-                        d="M5 9 l23 A1 40 l30 10"
-                        fill="none"
-                        stroke="cyan"
-                        strokeWidth="10"
-                        strokeLinecap="round"
-
-                    />
-                    {/*<G fill="none">*/}
-                        {/*<AnimatePath*/}
-                            {/*d="M5 8  l215 0 "*/}
-                            {/*stroke="#0078FF"*/}
-                            {/*strokeWidth="3"*/}
-                            {/*strokeDasharray="28,215"*/}
-                            {/*strokeDashoffset={this.state.strokeDashOffset}*/}
-                        {/*/>*/}
-                    {/*</G>*/}
-                </Svg>
             </TouchableWithoutFeedback>
         );
     }

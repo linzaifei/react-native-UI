@@ -5,6 +5,7 @@ import {
     Text,
     View,
     ScrollView,
+    SafeAreaView
 } from 'react-native';
 import ZFCountDown from "../../components/countDown/ZFCountDown";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
@@ -33,7 +34,7 @@ export default class ZFCountdownContrl extends Component {
     render() {
 
         return (
-            <View style={cusStyle.container}>
+            <SafeAreaView style={cusStyle.container}>
                 <ScrollView>
 
                     <View>
@@ -146,7 +147,7 @@ export default class ZFCountdownContrl extends Component {
 
                 </ScrollView>
 
-            </View>
+            </SafeAreaView>
         );
     }
 

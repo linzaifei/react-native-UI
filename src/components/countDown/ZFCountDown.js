@@ -6,6 +6,7 @@ import {
     View,
     ViewPropTypes,
     ART,
+    InteractionManager,
 } from 'react-native';
 
 import Proptypes from 'prop-types'
@@ -76,12 +77,17 @@ export default class ZFCountDown extends Component {
             intervalTime,
         }=this.props;
 
-        self.timer = setInterval(
-            () => {
-                self.downTime()
-            },
-            intervalTime
-        );
+
+            self.timer = setInterval(
+                () => {
+                    InteractionManager.runAfterInteractions(() => {
+                         self.downTime()
+                    });
+                },
+                intervalTime
+            );
+
+
     }
 
     downTime(){

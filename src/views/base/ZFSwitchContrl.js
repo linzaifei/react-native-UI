@@ -5,6 +5,7 @@ import {
     Text,
     View,
     ScrollView,
+    SafeAreaView
 } from 'react-native';
 import ZFSwitch from "../../components/switch/ZFSwitch";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
@@ -35,7 +36,7 @@ export default class ZFSwitchContrl extends Component {
         console.log('contrl 刷新了')
 
         return (
-            <View style={cusStyle.container}>
+            <SafeAreaView style={cusStyle.container}>
                 <ScrollView>
 
 
@@ -189,7 +190,7 @@ export default class ZFSwitchContrl extends Component {
 
                 </ScrollView>
 
-            </View>
+            </SafeAreaView>
         );
     }
 

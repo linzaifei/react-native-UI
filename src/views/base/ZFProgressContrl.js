@@ -5,6 +5,7 @@ import {
     Text,
     View,
     ScrollView,
+    SafeAreaView
 } from 'react-native';
 import ZFAnimationProgress from "../../components/progress/ZFAnimationProgress";
 import ZFLineProgressView from "../../components/progress/ZFLineProgressView";
@@ -33,7 +34,7 @@ export default class ZFProgressContrl extends Component {
 
     render() {
         return (
-           <View style={cusStyle.container}>
+           <SafeAreaView style={cusStyle.container}>
                <ScrollView>
 
 
@@ -214,7 +215,7 @@ export default class ZFProgressContrl extends Component {
                    {/*</View>*/}
 
                </ScrollView>
-           </View>
+           </SafeAreaView>
         );
     }
 

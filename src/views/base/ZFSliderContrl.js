@@ -5,6 +5,7 @@ import {
     Text,
     View,
     ScrollView,
+    SafeAreaView
 } from 'react-native';
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
 import ZFSliderBar from "../../components/slider/ZFSliderBar";
@@ -37,7 +38,7 @@ export default class ZFSliderContrl extends Component {
     render() {
         console.log('我刷新了')
         return (
-            <View style={cusStyle.container}>
+            <SafeAreaView style={cusStyle.container}>
                 <ScrollView>
 
                     <View style={{
@@ -91,7 +92,7 @@ export default class ZFSliderContrl extends Component {
                         {/*<ZFSliderCirle /> */}
                     </View>
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 

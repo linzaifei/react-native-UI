@@ -6,6 +6,7 @@ import {
     View,
     ScrollView,
     Image,
+    SafeAreaView
 } from 'react-native';
 import ZFTag from "../../components/tag/ZFTag";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
@@ -31,7 +32,7 @@ export default class ZFTagContrl extends Component {
 
     render() {
         return (
-            <View style={{
+            <SafeAreaView style={{
                 ...cusStyle.container
             }}>
                 <ScrollView>
@@ -46,7 +47,7 @@ export default class ZFTagContrl extends Component {
                             marginTop:1,
                             justifyContent:'space-around'
                         }}>
-                            <ZFTag uri={'https://image.weilanwl.com/img/square-1.jpg'} textStyle={{
+                            <ZFTag uri={'http://sowcar.com/t6/690/1553669990x2890191853.jpg'} textStyle={{
                                 fontSize:14,
                                 color:'#39b54a'
                             }}  text="小猫" />
@@ -54,8 +55,8 @@ export default class ZFTagContrl extends Component {
                                 width:45,
                                 height:45
                             }} />
-                            <ZFTag uri={'https://image.weilanwl.com/img/square-1.jpg'} direction={'top'} text="小猫" />
-                            <ZFTag uri={'https://image.weilanwl.com/img/square-1.jpg'} direction={'bottom'} text="小猫" />
+                            <ZFTag uri={'http://sowcar.com/t6/690/1553669990x2890191853.jpg'} direction={'top'} text="小猫" />
+                            <ZFTag uri={'http://sowcar.com/t6/690/1553669990x2890191853.jpg'} direction={'bottom'} text="小猫" />
                         </View>
                     </View>
 
@@ -237,7 +238,7 @@ export default class ZFTagContrl extends Component {
                     </View>
                 </ScrollView>
 
-            </View>
+            </SafeAreaView>
         );
     }
 

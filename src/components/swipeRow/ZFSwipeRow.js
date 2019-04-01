@@ -22,6 +22,7 @@ export default class ZFSwipeRow extends Component {
         onClickItem:Proptypes.func,/** 每一个子菜单点击 */
         disabled:Proptypes.bool,/** 是否禁止 默认false */
         isOpen:Proptypes.bool,/** 是否打开 默认false*/
+        onStateChange:Proptypes.func,/** 当前滑动的状态 true 表示开启*/
     }
     static defaultProps={
         itemWidth:100,
@@ -40,13 +41,16 @@ export default class ZFSwipeRow extends Component {
         }
     }
     componentDidMount(){
-        if(!this.props.isOpen){
-            this.stopSwiper()
-        }else {
+        if(this.props.isOpen){
+            this.noteX=null;
             this.startSwiper()
         }
     }
 
+    shouldComponentUpdate(nextProps,nextState){
+
+        return false;
+    }
 
     constructor(props) {
         super(props);
@@ -126,10 +130,15 @@ export default class ZFSwipeRow extends Component {
         const {
             swiperX,
         }=this.state;
+        const {
+            onStateChange
+        }=this.props;
         Animated.spring(swiperX,{
             toValue:value,
             duration,
-        }).start()
+        }).start(()=>{
+            onStateChange && onStateChange(this.isOpen);
+        })
     }
 
     getsubs(){

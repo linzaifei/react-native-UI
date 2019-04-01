@@ -26,20 +26,21 @@ export default class ZFCardContrl extends Component {
             title:navigation.getParam('title','按钮')
         }
     }
-
+//http://sowcar.com/t6/690/1553669958x2890191853.jpg
+    //http://sowcar.com/t6/690/1553669975x2890191853.jpg
     constructor(props) {
         super(props);
         this.state={
-            bgImage:'https://image.weilanwl.com/img/4x3-1.jpg',
+            bgImage:'http://sowcar.com/t6/690/1553669931x1965165878.jpg',
             list:[
-                'https://image.weilanwl.com/img/square-4.jpg',
-                'https://image.weilanwl.com/img/square-3.jpg',
-                'https://image.weilanwl.com/img/square-4.jpg',
-                'https://image.weilanwl.com/img/square-2.jpg',
-                'https://image.weilanwl.com/img/square-1.jpg',
-                'https://image.weilanwl.com/img/square-3.jpg',
-                'https://image.weilanwl.com/img/square-2.jpg',
-                'https://image.weilanwl.com/img/square-1.jpg',
+                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
             ],
             action:false,
 
@@ -79,7 +80,7 @@ export default class ZFCardContrl extends Component {
                             }}
                             bgImage={bgImage}
                             content="我和可爱的小猫咪"
-                            image="https://image.weilanwl.com/img/square-4.jpg"
+                            image="http://sowcar.com/t6/690/1553670043x2890191853.jpg"
                             title="小猫咪"
                             detail="十天前"
                             cardHeaderStyle={{
@@ -101,7 +102,7 @@ export default class ZFCardContrl extends Component {
                             }} />
                         </ZFTitleView>
                         <ZFActionCard
-                            image="https://image.weilanwl.com/img/square-4.jpg"
+                            image="http://sowcar.com/t6/690/1553670043x2890191853.jpg"
                             title="小猫咪"
                             detail="2018-10-20"
                             content="中国是世界四大文明古国之一，也是现仅存的文明古国，连续性五千年的文化传播，在亚洲东方形成了中国文明为代表的文化圈，这是我们的骄傲和自豪。在这五千多年中，辽阔的中华大地上"
@@ -125,7 +126,7 @@ export default class ZFCardContrl extends Component {
                     <View>
                         <ZFTitleView title="故事类卡片" />
                         <ZFStoryCard
-                            image="https://image.weilanwl.com/img/square-4.jpg"
+                            image="http://sowcar.com/t6/690/1553670043x2890191853.jpg"
                             title="中国是世界四大文明古国之一"
                             content="中国是世界四大文明古国之一，也是现仅存的文明古国，连续性五千年的文化传播，"
                             tags={[{

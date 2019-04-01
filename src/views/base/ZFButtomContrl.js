@@ -6,6 +6,7 @@ import {
     View,
     ScrollView,
     ActivityIndicator,
+    SafeAreaView,
 } from 'react-native';
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
 import ZFButtom from "../../components/Buttom/ZFButtom";
@@ -48,7 +49,7 @@ export default class ZFButtomContrl extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <ScrollView>
                     <View>
                         <ZFTitleView title="按钮形状" />
@@ -199,7 +200,7 @@ export default class ZFButtomContrl extends Component {
                     </View>
 
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 

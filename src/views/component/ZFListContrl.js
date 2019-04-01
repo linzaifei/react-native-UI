@@ -39,12 +39,14 @@ export default class ZFListContrl extends Component {
         this.state={
             scale :new Animated.Value(0),
             list:[
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014827&di=efa20a8e9344920139c84e8350e78d55&imgtype=0&src=http%3A%2F%2Fimg.tukexw.com%2Fimg%2F7ed50eac2e2b4466.jpg',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=b94ba89b82414798b9d2efcf26a6eeaf&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201504%2F25%2F20150425142538_BH3MZ.thumb.224_0.jpeg',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=08e0d467050339b459451560972f6bfa&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fpic%2Fe%2Fdf%2F8b371622755_250_350.jpg',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=c9ccf1d3dbaa14eaefcae5936934232f&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Flarge%2F85cccab3gw1etgx429jo1g20dw07yhcc.jpg',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014826&di=ec6d30449dcd08e389f19036d612fd1b&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201606%2F29%2F20160629233156_wKx8N.thumb.224_0.jpeg',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851014825&di=c5833802c08bb32523862472460e9d02&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181004%2F17%2F1538645580-vpJwukOanA.gif',
+                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
+                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
             ],
             listArr:[
                 {
@@ -412,7 +414,7 @@ export default class ZFListContrl extends Component {
                         <ZFTitleView title="消息类表" />
 
                         <ZFMessageItem
-                            image={'https://image.weilanwl.com/img/square-1.jpg'}
+                            image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
                             title="小林子"
                             titleType={'group'}
                             titleTag="6人"
@@ -422,7 +424,7 @@ export default class ZFListContrl extends Component {
                         />
 
                         <ZFMessageItem
-                            image={'https://image.weilanwl.com/img/square-1.jpg'}
+                            image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
                             title="小林子"
                             titleType={'group'}
                             titleTag="SVIP"
@@ -435,7 +437,7 @@ export default class ZFListContrl extends Component {
                         />
 
                         <ZFMessageItem
-                            image={'https://image.weilanwl.com/img/square-1.jpg'}
+                            image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
                             title="小林子"
                             time="20.00"
                             detailType={'message'}
@@ -465,7 +467,7 @@ export default class ZFListContrl extends Component {
                             }
                         ]} isOpen={true} >
                             <ZFMessageItem
-                                image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
                                 title="小林子"
                                 titleType={'group'}
                                 titleTag="6人"
@@ -493,7 +495,7 @@ export default class ZFListContrl extends Component {
                             )
                         }} >
                             <ZFMessageItem
-                                image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
                                 title="小林子"
                                 titleType={'group'}
                                 titleTag="6人"
@@ -516,7 +518,7 @@ export default class ZFListContrl extends Component {
                             alert(index)
                         }} >
                             <ZFMessageItem
-                                image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
                                 title="小林子"
                                 titleType={'group'}
                                 titleTag="6人"

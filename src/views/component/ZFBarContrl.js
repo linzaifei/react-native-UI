@@ -5,6 +5,7 @@ import {
     Text,
     View,
     ScrollView,
+    SafeAreaView
 } from 'react-native';
 import ZFBarShop from "../../viewconponent/bar/ZFBarShop";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
@@ -33,7 +34,7 @@ export default class ZFBarContrl extends Component {
 
     render() {
         return (
-            <View style={{
+            <SafeAreaView style={{
                 ...cusStyle.container
             }}>
 
@@ -333,7 +334,7 @@ export default class ZFBarContrl extends Component {
                     </View>
 
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 

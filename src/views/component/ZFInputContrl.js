@@ -6,6 +6,7 @@ import {
     View,
     ScrollView,
     Animated,
+    SafeAreaView
 } from 'react-native';
 import ZFInput from "../../viewconponent/input/ZFInput";
 
@@ -44,7 +45,7 @@ export default class ZFInputContrl extends Component {
     render() {
         console.log('=====shuxing')
         return (
-            <View style={{
+            <SafeAreaView style={{
                 ...cusStyle.container,
             }}>
 
@@ -174,7 +175,7 @@ export default class ZFInputContrl extends Component {
 
                 </ScrollView>
 
-            </View>
+            </SafeAreaView>
         );
     }
 

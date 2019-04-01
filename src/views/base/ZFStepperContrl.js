@@ -5,6 +5,7 @@ import {
     Text,
     View,
     ScrollView,
+    SafeAreaView
 } from 'react-native';
 import ZFStepper from "../../components/stepper/ZFStepper";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
@@ -32,7 +33,7 @@ export default class ZFRNDemo extends Component {
 
     render() {
         return (
-            <View style={cusStyle.container}>
+            <SafeAreaView style={cusStyle.container}>
                 <ScrollView>
 
                     <View style={{
@@ -82,7 +83,7 @@ export default class ZFRNDemo extends Component {
 
 
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 

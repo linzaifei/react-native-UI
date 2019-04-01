@@ -122,7 +122,7 @@ export default class ZFTimelineContrl extends Component {
 
                         rightView={
                             <ZFStoryCard
-                                image="https://image.weilanwl.com/img/square-4.jpg"
+                                image="http://sowcar.com/t6/690/1553670017x2890191853.jpg"
                                 title="《琵琶行-白居易》"
                                 content="冰泉冷涩弦凝绝，凝绝不通声暂歇。别有幽愁暗恨生，此时无声胜有声。银瓶乍破水浆迸，"
                                 tags={[{
@@ -165,7 +165,7 @@ export default class ZFTimelineContrl extends Component {
                                 }
                             ]} >
                                 <ZFMessageItem
-                                    image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                    image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
                                     title="小林子"
                                     titleType={'group'}
                                     titleTag="6人"

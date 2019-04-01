@@ -5,7 +5,7 @@ import {
     Text,
     View,
 } from 'react-native';
-import ZFheader from "../../components/header/ZFheader";
+
 
 
 export default class ZFHeaderContrl extends Component {
@@ -22,7 +22,7 @@ export default class ZFHeaderContrl extends Component {
     render() {
         return (
             <View>
-                <ZFheader />
+
             </View>
         );
     }

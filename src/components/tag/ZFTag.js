@@ -60,36 +60,20 @@ export default class ZFTag extends Component {
             imgStyle,
         }=this.props;
 
-        // var word = repaceOne(direction);
-        // var key = 'margin'+word;
-        // var subStyle = new Map();
-        // subStyle.setValue(key)
-        //
-        //
-        // console.log('==================='+JSON.stringify(subStyle))
-        //
-
-        var subStyle;
+        var marginSpace='marginLeft';
         switch (direction){
             case 'left':
-                subStyle={
-                    marginLeft:space
-                }
+                marginSpace='marginLeft';
                 break;
             case 'right':
-                subStyle={
-                    marginRight:space
-                }
+                marginSpace='marginRight';
                 break;
             case 'top':
-                subStyle={
-                    marginTop:space
-                }
+                marginSpace='marginTop';
+
                 break;
             case 'bottom':
-                subStyle={
-                    marginBottom:space
-                }
+                marginSpace='marginBottom';
                 break;
         }
 
@@ -101,7 +85,7 @@ export default class ZFTag extends Component {
                     width:30,
                     height:30,
                     ...imgStyle,
-                    ...subStyle,
+                    [marginSpace]:space,
                 }} />
             )
         }
@@ -139,7 +123,6 @@ var styles = StyleSheet.create({
     container: {
         padding:4,
         backgroundColor:'#fff',
-
     },
     layout_row:{
         flexDirection:'row',
