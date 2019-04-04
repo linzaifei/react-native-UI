@@ -13,7 +13,7 @@ import ZFTitleView from "../../components/TitleView/ZFTitleView";
 import ZFSelectItem from "../../viewconponent/selectItem/ZFSelectItem";
 import ZFSelectIcon from "../../viewconponent/selectItem/ZFSelectIcon";
 import ZFIconTag from "../../components/tag/ZFIconTag";
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 import ZFSwitch from "../../components/switch/ZFSwitch";
 import ZFsquare from "../../viewconponent/square/ZFsquare";
 import ZFSmalTag from "../../components/tag/ZFSmalTag";

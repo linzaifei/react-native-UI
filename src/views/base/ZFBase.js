@@ -12,7 +12,7 @@ import ZFBgIcon from "../custom/ZFBgIcon";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import BGIconAnimation from "../custom/BGIconAnimation";
 import ZFBasePath from "./ZFBasePath";
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
 
 
@@ -35,9 +35,11 @@ export default class ZFBase extends Component {
                 { title: '加载', name: 'Loading', color: 'green', icon: 'ic_loadding' ,pushName:'loaddingContrl'},
                 { title: '步进器 ', name: 'Stepper', color: 'midnightblue', icon: 'ic_tubiao' ,pushName:'stepperContrl'},
                 { title: '倒计时', name: 'CountDown', color: 'olive', icon: 'ic_bk' ,pushName:'countdownContrl'},
-                // { title: '头像', name: 'Avatar', color: 'red', icon: 'ic_tx' ,pushName:'headerContrl'},
+                { title: '轮播图', name: 'Swiper', color: '#9c26b0', icon: 'ic_tubiao' ,pushName:'swiperContrl'},
+                { title: '评分图', name: 'Star', color: '#a5673f', icon: 'ic_bk' ,pushName:'starContrl'},
                 { title: '标签', name: 'Tag', color: 'brown', icon: 'ic_tag' ,pushName:'tagContrl'},
-                // { title: '布局', name: 'Layout', color: 'cyan', icon: 'ic_layout' ,pushName:'buttomContrl'},
+
+
 
             ],
         }

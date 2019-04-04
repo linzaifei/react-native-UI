@@ -23,7 +23,8 @@ import ZFCountdownContrl from './views/base/ZFCountdownContrl'
 import ZFLoaddingContrl from './views/base/ZFLoaddingContrl'
 import ZFHeaderContrl from './views/base/ZFHeaderContrl'
 import ZFTagContrl from './views/base/ZFTagContrl'
-
+import  ZFSwiperContrl from './views/base/ZFSwiperContrl'
+import  ZFStarContrl from './views/base/ZFStarContrl'
 
 
 /** 项目组件 */
@@ -33,7 +34,10 @@ import ZFListContrl from './views/component/ZFListContrl'
 import ZFCardContrl from './views/component/ZFCardContrl'
 import ZFBarContrl from  './views/component/ZFBarContrl'
 import ZFTimelineContrl from './views/component/ZFTimelineContrl'
-import  ZFSwiperContrl from './views/component/ZFSwiperContrl'
+import ZFModalContrl from './views/component/ZFModalContrl'
+
+
+
 
 import ZFExpand from './views/expand/ZFExpand'
 import ZFAbout from './views/about/ZFAbout'
@@ -146,6 +150,12 @@ const subStack=createStackNavigator({
     tagContrl:{
         screen:ZFTagContrl,
     },
+    swiperContrl:{
+        screen:ZFSwiperContrl,
+    },
+    starContrl:{
+        screen:ZFStarContrl,
+    },
 
     /** 项目组件 */
     inputContrl:{
@@ -163,9 +173,10 @@ const subStack=createStackNavigator({
     timelineContrl:{
         screen:ZFTimelineContrl,
     },
-    swiperContrl:{
-        screen:ZFSwiperContrl,
+    modalContrl:{
+        screen:ZFModalContrl,
     },
+
 
 
 },{

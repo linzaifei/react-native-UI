@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
 import ZFSliderBar from "../../components/slider/ZFSliderBar";
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 
 import IconFont from '../../Icon/IconFont'
 import ZFSliderCirle from "../../components/slider/ZFSliderCirle";

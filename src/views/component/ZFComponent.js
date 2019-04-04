@@ -27,9 +27,7 @@ export default class ZFComponent extends Component {
                 { title: '卡片', name: 'Card', color: '#1cbbb4', icon: 'ic_wenben' ,pushName:'cardContrl'},
                 { title: '操作条', name: 'Bar', color: '#0081ff', icon: 'ic_beijing' ,pushName:'barContrl'},
                 { title: '时间轴', name: 'Timeline', color: '#6739b6', icon: 'ic_loadding' ,pushName:'timelineContrl'},
-                { title: '轮播图', name: 'Swiper', color: '#9c26b0', icon: 'ic_tubiao' ,pushName:'swiperContrl'},
-                { title: '倒计时', name: 'CountDown', color: '#a5673f', icon: 'ic_bk' ,pushName:'countdownContrl'},
-                { title: '标签', name: 'Tag', color: '#e03997', icon: 'ic_tag' ,pushName:'tagContrl'},
+                { title: '模态框', name: 'Modal', color: '#e03997', icon: 'ic_tag' ,pushName:'modalContrl'},
             ],
         }
     }

@@ -9,7 +9,7 @@ import {
 
 import PropTypes from 'prop-types'
 import ZFInputView from "../../components/inputView/ZFInputView";
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 import IconFont from '../../Icon/IconFont'
 export default class ZFSendBar extends Component {
 

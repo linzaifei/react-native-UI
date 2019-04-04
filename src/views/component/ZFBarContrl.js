@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import ZFBarShop from "../../viewconponent/bar/ZFBarShop";
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 import ZFSearchBar from "../../viewconponent/bar/searchBar/ZFSearchBar";
 import ZFImageView from "../../components/imageView/ZFImageView";
 import ZFIconTag from "../../components/tag/ZFIconTag";

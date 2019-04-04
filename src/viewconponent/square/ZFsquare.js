@@ -80,6 +80,25 @@ export default class ZFsquare extends Component {
     }
 
 
+    delView(index){
+        const {
+            onDelItem,
+            showDel,
+        }=this.state;
+        if(showDel){
+            return (
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={()=>{
+                        onDelItem&&onDelItem(index)
+                    }}
+                    style={styles.delStyle}>
+                    <Image source={require('./del.png')} style={{width:15,height:15}} />
+                </TouchableOpacity>
+            )
+        }
+    }
+
 
     getItems(width){
         const {
@@ -91,7 +110,7 @@ export default class ZFsquare extends Component {
             onClickItem,
         }=this.props;
 
-       var boIndex = parseInt((list.length /count)) * count;
+        var boIndex = parseInt((list.length /count)) * count;
         var subs = []
         list.map((item,index)=>{
             subs.push(
@@ -118,6 +137,7 @@ export default class ZFsquare extends Component {
                             tabs? tabs(item,index,width):
                                 <Image source={{uri:item}} style={{width:width,height:width}} />
                         }
+                        {this.delView(index)}
                     </Animated.View>
                 </TouchableWithoutFeedback>
             )
@@ -201,4 +221,15 @@ var styles = StyleSheet.create({
 
         overflow:'hidden'
     },
+    delStyle:{
+        width:35,
+        height:20,
+        justifyContent:'center',
+        alignItems:'center',
+        borderBottomLeftRadius:10,
+        backgroundColor:'red',
+        position:'absolute',
+        top:0,
+        right:0,
+    }
 });

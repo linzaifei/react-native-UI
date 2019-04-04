@@ -12,7 +12,7 @@ import ZFInput from "../../viewconponent/input/ZFInput";
 
 import IconFont from '../../Icon/IconFont'
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 import ZFCountDown from "../../components/countDown/ZFCountDown";
 export default class ZFInputContrl extends Component {
 

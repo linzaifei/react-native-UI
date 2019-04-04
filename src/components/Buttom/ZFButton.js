@@ -11,7 +11,7 @@ import {
 
 import Proptypes from 'prop-types'
 
-export default class ZFButtom extends Component {
+export default class ZFButton extends Component {
 
     static propTypes={
         btnStyle:ViewPropTypes.style,

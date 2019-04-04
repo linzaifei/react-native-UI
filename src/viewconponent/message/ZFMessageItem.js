@@ -123,16 +123,17 @@ export default class ZFMessageItem extends Component {
                 break;
             case 'message':
             case 'no-message':
-                return(
-                    <ZFSmalTag type={'tag'} value={message.toString()} textStyle={{
-                        fontSize:12,
+                if(message!=0){
+                    return(
+                        <ZFSmalTag type={'tag'} value={message.toString()} textStyle={{
+                            fontSize:12,
 
-                    }} tagStyle={{
-                        backgroundColor: messageType =='message'? '#e54d42':'#8799a3'
+                        }} tagStyle={{
+                            backgroundColor: messageType =='message'? '#e54d42':'#8799a3'
 
-                    }}  />
-                )
-
+                        }}  />
+                    )
+                }
                 break;
         }
     }

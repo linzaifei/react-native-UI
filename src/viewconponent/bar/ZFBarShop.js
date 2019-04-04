@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import ZFCommentCell from "../card/ZFCommentCell";
 import PropTypes from 'prop-types'
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 
 export default class ZFBarShop extends Component {
 

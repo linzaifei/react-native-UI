@@ -12,7 +12,7 @@ import ZFInput from "../../viewconponent/input/ZFInput";
 
 import IconFont from '../../Icon/IconFont'
 import ZFTitleView from "../../components/TitleView/ZFTitleView";
-import ZFButtom from "../../components/Buttom/ZFButtom";
+import ZFButtom from "../../components/Buttom/ZFButton";
 import ZFCard from "../../viewconponent/card/ZFCard";
 import ZFActionCard from "../../viewconponent/card/ZFActionCard";
 import ZFSwitch from "../../components/switch/ZFSwitch";

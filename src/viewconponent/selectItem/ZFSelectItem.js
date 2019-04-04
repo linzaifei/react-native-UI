@@ -6,7 +6,7 @@ import {
     View,
     ViewPropTypes,
     Image,
-    TextInput,
+    TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types'
 import ZFTag from "../../components/tag/ZFTag";
@@ -19,7 +19,6 @@ export default class ZFSelectItem extends Component {
         itemStyle:ViewPropTypes.style,
         leftView:PropTypes.element,/** 左视图 */
         centerView:PropTypes.element,/** 中间试图 */
-        // rightView:PropTypes.element,/** 右试图 */
         placeholder:PropTypes.string,/** 占位符 */
         placeholderTextColor:PropTypes.string,/** 占位符颜色 */
         maxLength:PropTypes.number,/** 输入字符最大个数 */
@@ -27,14 +26,14 @@ export default class ZFSelectItem extends Component {
         keyboardType:PropTypes.oneOf(['default','number-pad','decimal-pad','numeric','email-address','phone-pad',]),/** 键盘类型 */
         secureTextEntry:PropTypes.bool,/** 是否显示 默认 false */
         animation:PropTypes.bool,/** 是否需要动画 默认true */
-
         defaultValue:PropTypes.string,/** 默认value */
         fontSize:PropTypes.number,/** 字体大小 */
         canArrow:PropTypes.bool,/** 有没有箭头 */
+        canTag:PropTypes.bool,/** 有没有* */
         editable:PropTypes.bool,/** 是否可以编辑 默认可以 false*/
         numberOfLines:PropTypes.number,/** 不可编辑下最多显示几行 默认3  */
         onChangeText:PropTypes.func,/** 回调输入文字*/
-
+        onPress:PropTypes.func,/** 点击 */
     }
 
     static defaultProps = {
@@ -43,6 +42,7 @@ export default class ZFSelectItem extends Component {
         keyboard:'default',
         fontSize:15,
         numberOfLines:3,
+        canTag:false,
     }
 
 
@@ -55,12 +55,29 @@ export default class ZFSelectItem extends Component {
 
     shouldComponentUpdate(nextProps,nextState){
         // console.log('=========nextState'+JSON.stringify(nextState))
+        if(nextProps.defaultValue !=this.props.defaultValue){
+            return true
+        }
         return false;
     }
 
     cusLeftView(){
+        const {
+            canTag
+        }=this.props;
         return(
-            <ZFTag {...this.props} />
+            <View style={{
+                flexDirection:'row',
+                alignItems:'center'
+            }}>
+                <ZFTag {...this.props} />
+                {
+                    canTag?<Text style={{
+                        color:'red',
+                        marginLeft:2,
+                    }}>*</Text>:null
+                }
+            </View>
         )
     }
 
@@ -102,7 +119,7 @@ export default class ZFSelectItem extends Component {
         }else {
             return(
                 <Text style={{
-                   textAlign:'right',
+                    textAlign:'right',
                     flex:1,
                     fontSize,
                     color:defaultValue ?"#333":'#ddd'
@@ -130,14 +147,20 @@ export default class ZFSelectItem extends Component {
             itemStyle,
             leftView,
             centerView,
+            onPress,
         }=self.props;
         return (
-            <View style={{
-                padding:5,
-                backgroundColor:'#fff',
-                ...itemStyle,
-                ...styles.container,
-            }}>
+            <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={()=>{
+                    onPress &&onPress()
+                }}
+                style={{
+                    padding:5,
+                    backgroundColor:'#fff',
+                    ...itemStyle,
+                    ...styles.container,
+                }}>
                 {
                     leftView?leftView:self.cusLeftView()
                 }
@@ -150,7 +173,7 @@ export default class ZFSelectItem extends Component {
                     }
                     {this.backView()}
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 

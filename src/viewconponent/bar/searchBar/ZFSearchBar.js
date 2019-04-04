@@ -9,7 +9,7 @@ import {
 
 import PropTypes from 'prop-types'
 import ZFSearchBarItem from "./ZFSearchBarItem";
-import ZFButtom from "../../../components/Buttom/ZFButtom";
+import ZFButtom from "../../../components/Buttom/ZFButton";
 
 export default class ZFSearchBar extends Component {
 

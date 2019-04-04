@@ -97,10 +97,18 @@ export default class ZFInput extends Component {
     }
 
     shouldComponentUpdate(nextProps,nextState){
-        console.log('=========nextState'+JSON.stringify(nextState))
+        // console.log('=========nextState'+JSON.stringify(nextState))
+        if(nextProps.placeholder !=this.props.placeholder
+            ||nextProps.defaultValue !=this.props.defaultValue
+            ||nextProps.image !=this.props.image
+            ||nextProps.imageH !=this.props.imageH
+            ||nextProps.maxLength !=this.props.maxLength
+        ){
+
+            return true
+        }
         return false;
     }
-
 
     leftView() {
         var self = this;
@@ -115,8 +123,8 @@ export default class ZFInput extends Component {
         const {
             leftX,
         }=self.state;
-        const imgUrl = typeof image == 'string' ? {url:image}:image;
-        const imgHUrl = typeof imageH == 'string' ? {url:imageH}:imageH;
+        const imgUrl = typeof image == 'string' ? {uri:image}:image;
+        const imgHUrl = typeof imageH == 'string' ? {uri:imageH}:imageH;
         return (
             <View style={{
                 ...styles.container
@@ -139,7 +147,7 @@ export default class ZFInput extends Component {
                 >
                     {
                         showIcon ?lableSel:
-                            <Image source={imgHUrl} style={{
+                            <Image source={imgHUrl} resizeMode="contain" style={{
                                 ...styles.imageStyle,
                                 ...imageStyle,
                             }}/>
@@ -164,7 +172,7 @@ export default class ZFInput extends Component {
                 >
                     {
                         showIcon?lable :
-                            <Image source={imgUrl} style={{
+                            <Image source={imgUrl} resizeMode="contain" style={{
                                 ...styles.imageStyle,
                                 ...imageStyle,
                             }}/>

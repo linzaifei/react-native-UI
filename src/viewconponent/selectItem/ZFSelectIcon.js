@@ -22,6 +22,9 @@ export default class ZFSelectIcon extends Component {
 
     shouldComponentUpdate(nextProps,nextState){
         // console.log('=========nextState'+JSON.stringify(nextState))
+        if(nextProps.defaultValue !=this.props.defaultValue){
+            return true
+        }
         return false;
     }
 
