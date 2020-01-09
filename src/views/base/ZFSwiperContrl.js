@@ -29,9 +29,9 @@ export default class ZFSwiperContrl extends Component {
         this.state={
             index: 0,
             list:[
-                'http://sowcar.com/t6/690/1553669958x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553669975x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553669931x1965165878.jpg',
+                'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50121/4224.jpg_wh300.jpg',
             ],
         }
 

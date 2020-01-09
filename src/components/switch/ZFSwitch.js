@@ -10,10 +10,11 @@ import {
 
 import PropTypes from 'prop-types'
 
+
 export default class ZFSwitch extends Component {
 
     static propTypes = {
-        isOn: PropTypes.bool.isRequired,/** 开关状态 */
+        isOn: PropTypes.bool,/** 开关状态 */
         onColor: PropTypes.string.isRequired,/** 开关开启颜色 */
         offColor: PropTypes.string.isRequired,/** 开关关闭颜色 */
         size:PropTypes.oneOf(['small','medium','large']),/** 开关size */
@@ -42,30 +43,28 @@ export default class ZFSwitch extends Component {
         this.startAnimation()
     }
 
-    shouldComponentUpdate(nextProps,nextState) {
-        // console.log('====nextState'+nextState.isOn)
-        // console.log('====state'+this.state.isOn)
-        if (nextState.isOn != this.state.isOn) {
-            // console.log('==== com'+this.state.isOn)
-            return false;
+    componentWillReceiveProps(nextProps){
+        // console.log('=======',nextProps)
+        if(nextProps.isOn != this.props.isOn){
+            this.state.isOn = nextProps.isOn;
+            this.startAnimation()
         }
-        return true;
     }
 
-
+    shouldComponentUpdate(nextProps,nextState) {
+        return false
+    }
 
     startAnimation(){
         var self = this;
         const {
             transX,
-            isOn
+            isOn,
         }=self.state;
         Animated.timing(transX,{
             toValue:isOn?1:0,
         }).start(()=>{
-            self.setState({
-                isOn:!isOn,
-            })
+            self.state.isOn =! self.state.isOn;
         })
     }
 
@@ -120,11 +119,8 @@ export default class ZFSwitch extends Component {
             transX,
         }=this.state;
 
-        // console.log('=====刷新界面了')
-
+        console.log('=====刷新界面-switch')
         var packageData=this.getSize();
-
-
 
         return (
             <TouchableWithoutFeedback

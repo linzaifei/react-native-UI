@@ -27,16 +27,12 @@ export default class ZFDrawText extends Component {
     }
 
     shouldComponentUpdate(nextProps,nextState){
-        console.log('nextProps======'+nextProps.value)
-        console.log('props======'+this.props.value)
-        if(this.props.value != nextProps.value){
-            return true;
-        }
-        return false;
+
+        return this.props.value != nextProps.value;
     }
 
     render() {
-        console.log('========刷新了')
+        // console.log('========刷新了')
         const {
             value,
         }=this.props;

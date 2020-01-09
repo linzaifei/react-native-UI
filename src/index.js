@@ -21,7 +21,7 @@ import ZFSliderContrl from './views/base/ZFSliderContrl'
 import ZFStepperContrl from './views/base/ZFStepperContrl'
 import ZFCountdownContrl from './views/base/ZFCountdownContrl'
 import ZFLoaddingContrl from './views/base/ZFLoaddingContrl'
-import ZFHeaderContrl from './views/base/ZFHeaderContrl'
+
 import ZFTagContrl from './views/base/ZFTagContrl'
 import  ZFSwiperContrl from './views/base/ZFSwiperContrl'
 import  ZFStarContrl from './views/base/ZFStarContrl'
@@ -143,9 +143,6 @@ const subStack=createStackNavigator({
     },
     loaddingContrl:{
         screen:ZFLoaddingContrl,
-    },
-    headerContrl:{
-        screen:ZFHeaderContrl,
     },
     tagContrl:{
         screen:ZFTagContrl,

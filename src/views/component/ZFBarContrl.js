@@ -175,7 +175,7 @@ export default class ZFBarContrl extends Component {
                             placeholder="搜索图片、文字、视频"
                             leftView={
                                 <ZFImageView
-                                    image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                    image={'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg'}
                                     imageStyle={{
                                         width:28,
                                         height:28,
@@ -213,7 +213,7 @@ export default class ZFBarContrl extends Component {
                             placeholder="搜索图片、文字、视频"
                             leftView={
                                 <ZFImageView
-                                    image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                    image={'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg'}
                                     imageStyle={{
                                         width:28,
                                         height:28,
@@ -300,7 +300,7 @@ export default class ZFBarContrl extends Component {
                                 <ZFTag
                                     leftTopView={
                                         <ZFImageView
-                                            image={'https://image.weilanwl.com/img/square-1.jpg'}
+                                            image={'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg'}
                                             imageStyle={{
                                                 width:28,
                                                 height:28,

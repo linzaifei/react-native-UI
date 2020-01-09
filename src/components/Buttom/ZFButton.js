@@ -22,7 +22,7 @@ export default class ZFButton extends Component {
         animation:Proptypes.bool,/** 动画 默认true */
         onPress:Proptypes.func,/** 点击事件 */
         onLongPress:Proptypes.func,/** 长按事件 */
-        children:Proptypes.node,/**  */
+        children:Proptypes.node,
     }
 
     static defaultProps={
@@ -40,6 +40,23 @@ export default class ZFButton extends Component {
     componentDidMount(){
 
     }
+
+
+    shouldComponentUpdate(nextProps,nextState){
+        const {
+            title,
+            hollow,
+            disabled,
+        }=this.props;
+
+        let canUpdate =
+            (title != nextProps.title)
+            || (hollow != nextProps.hollow)
+            ||(disabled !=nextProps.disabled);
+        if(canUpdate)return true;
+        return false
+    }
+
 
     startAnimation(){
 
@@ -75,6 +92,7 @@ export default class ZFButton extends Component {
     }
 
     render() {
+        console.log('刷新界面-按钮')
         var self = this;
         const {
             transform,
@@ -90,7 +108,7 @@ export default class ZFButton extends Component {
             disabled,
         }=self.props;
 
-        var btnS = hollow ? {
+        var btnHollow = hollow ? {
             backgroundColor:'transparent',
             borderWidth:1,
             borderColor:textStyle.color,
@@ -119,7 +137,8 @@ export default class ZFButton extends Component {
                     style={{
                         ...styles.container,
                         ...btnStyle,
-                        ...btnS,
+                        ...btnHollow,
+                        ...styles.btnStyle,
                         transform:[
                             {
                                 translateX:transform.x,
@@ -145,13 +164,15 @@ export default class ZFButton extends Component {
 
 var styles = StyleSheet.create({
     container: {
-        flexDirection:'row',
         backgroundColor:'#F0F0F0',
         paddingTop:6,
         paddingBottom:6,
         paddingLeft:10,
         paddingRight:10,
         borderRadius:3,
+    },
+    btnStyle:{
+        flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
     },

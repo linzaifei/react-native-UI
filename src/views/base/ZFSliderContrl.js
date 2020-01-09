@@ -13,85 +13,96 @@ import ZFButtom from "../../components/Buttom/ZFButton";
 
 import IconFont from '../../Icon/IconFont'
 import ZFSliderCirle from "../../components/slider/ZFSliderCirle";
+import ZFLineProgressView from "../../components/progress/ZFLineProgressView";
+
 export default class ZFSliderContrl extends Component {
 
-    static navigationOptions=({navigation})=>{
+    static navigationOptions = ({navigation}) => {
         const params = navigation.state.params || {};
-        return{
-            title:navigation.getParam('title','按钮')
+        return {
+            title: navigation.getParam('title', '按钮')
         }
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         console.log('======销毁了')
     }
+
     constructor(props) {
 
         super(props);
 
-        this.state={
-         value:0.2,
+        this.state = {
+            progress: 0,
+
         }
     }
 
 
     render() {
-        console.log('我刷新了')
+        // console.log('我刷新了')
+        const {
+            progress,
+        } = this.state
         return (
             <SafeAreaView style={cusStyle.container}>
-                <ScrollView>
+                <ZFTitleView title="滑动"/>
+                {/*<ScrollView>*/}
+
 
                     <View style={{
-                        marginTop:10
+                        padding: 10,
+                        backgroundColor: '#fff',
                     }}>
-                        <ZFTitleView title="滑动" />
 
-                        <View style={{
-                            padding:10,
-                            backgroundColor:'#fff',
-                            marginTop:1,
-                            flex:1,
-                        }}>
+                        <ZFSliderBar
+                            value={progress}
+                            progressColor={'#9c26b0'}
+                            sliderStyle={{
+                                marginTop: 20
+                            }}
+                            tagStyle={{
+                                backgroundColor: '#6739b6'
+                            }}
+                            onValueChange={(value) => {
+                                console.log('=====' + value)
 
-                            <ZFSliderBar
-                                value={this.state.value}
-                                progressColor={'#9c26b0'}
-                                sliderStyle={{
-                                    marginTop:20
-                                }}
-                                tagStyle={{
-                                    backgroundColor:'#6739b6'
-                                }}
-                                onValueChange={(value)=>{
-                                    console.log('====='+value)
+                            }}
+                        />
 
-                                }}
+                        <ZFSliderBar
+                            progressColor={['#6739b6', '#39b54a']}
+                            sliderStyle={{
+                                marginTop: 20
+                            }}
+                            onValueChange={(value) => {
+                                console.log('=====' + value)
+                                this.setState({
+                                    progress: value
+                                })
+                            }}
+                            tagStyle={{
+                                backgroundColor: '#6739b6'
+                            }}
+                        >
+                            <IconFont
+                                name="ic_beijing"
+                                color="#fff"
+                                size={12}
                             />
+                        </ZFSliderBar>
 
-                            <ZFSliderBar
-                                progressColor={['#6739b6','#39b54a']}
-                                sliderStyle={{
-                                    marginTop:20
-                                }}
-                                onValueChange={(value)=>{
-                                    console.log('====='+value)
-                                }}
-                                tagStyle={{
-                                   backgroundColor:'#6739b6'
-                                }}
-                            >
-                                <IconFont
-                                    name="ic_beijing"
-                                    color="#fff"
-                                    size={12}
-                                />
-                            </ZFSliderBar>
+                        <ZFSliderBar
+                            progressColor={['#6739b6', '#39b54a']}
+                            showTag={false}
+                            value={progress}
+                            sliderStyle={{
+                                marginTop: 20
+                            }}
+                        />
 
-                        </View>
-
-                        {/*<ZFSliderCirle /> */}
                     </View>
-                </ScrollView>
+                {/*</ScrollView>*/}
             </SafeAreaView>
         );
     }

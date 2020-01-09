@@ -31,16 +31,14 @@ export default class ZFCardContrl extends Component {
     constructor(props) {
         super(props);
         this.state={
-            bgImage:'http://sowcar.com/t6/690/1553669931x1965165878.jpg',
+            bgImage:'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+            headerImg:'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
             list:[
-                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
+                'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50121/4224.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
             ],
             action:false,
 
@@ -65,6 +63,7 @@ export default class ZFCardContrl extends Component {
             bgImage,
             list,
             action,
+            headerImg,
         }=this.state;
         return (
             <SafeAreaView style={{
@@ -80,7 +79,7 @@ export default class ZFCardContrl extends Component {
                             }}
                             bgImage={bgImage}
                             content="我和可爱的小猫咪"
-                            image="http://sowcar.com/t6/690/1553670043x2890191853.jpg"
+                            image={headerImg}
                             title="小猫咪"
                             detail="十天前"
                             cardHeaderStyle={{
@@ -102,11 +101,11 @@ export default class ZFCardContrl extends Component {
                             }} />
                         </ZFTitleView>
                         <ZFActionCard
-                            image="http://sowcar.com/t6/690/1553670043x2890191853.jpg"
+                            image={headerImg}
                             title="小猫咪"
                             detail="2018-10-20"
                             content="中国是世界四大文明古国之一，也是现仅存的文明古国，连续性五千年的文化传播，在亚洲东方形成了中国文明为代表的文化圈，这是我们的骄傲和自豪。在这五千多年中，辽阔的中华大地上"
-                            list={action?['https://image.weilanwl.com/img/square-1.jpg']:list}
+                            list={action?['http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg']:list}
                             zan={5}
                             msg={20}
                             look={40}
@@ -126,7 +125,7 @@ export default class ZFCardContrl extends Component {
                     <View>
                         <ZFTitleView title="故事类卡片" />
                         <ZFStoryCard
-                            image="http://sowcar.com/t6/690/1553670043x2890191853.jpg"
+                            image={headerImg}
                             title="中国是世界四大文明古国之一"
                             content="中国是世界四大文明古国之一，也是现仅存的文明古国，连续性五千年的文化传播，"
                             tags={[{

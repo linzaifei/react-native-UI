@@ -5,10 +5,7 @@ import {
     Text,
     View,
     ViewPropTypes,
-    Animated,
-    LayoutAnimation,
-    Platform,
-    UIManager,
+
 
 } from 'react-native';
 
@@ -17,63 +14,73 @@ import Proptypes from 'prop-types'
 export default class ZFTitleView extends Component {
 
     static propTypes={
+        style:ViewPropTypes.style,
+        titleStyle:ViewPropTypes.style,
+        tagColor:Proptypes.string,
         title:Proptypes.string,
-        backgroundColor:Proptypes.string,
-        textStyle:ViewPropTypes.style,
         children:Proptypes.element,/**  */
+        canTag:Proptypes.bool,/** 有没有标记 */
     }
     static defaultProps={
-        backgroundColor:defaultColor
+        canTag:false,
+        tagColor:'#2b3643',
+        canRefresh:false,
     }
 
-    constructor(props){
-        super(props)
-        this.state={
-
-        }
-
-    }
 
     componentDidMount(){
 
     }
 
     shouldComponentUpdate(nextProps,nextState){
-        // console.log('=========nextState'+JSON.stringify(nextState))
-        return false;
+        // console.log('=========',nextProps)
+        return (this.props.canTag != nextProps.canTag) ||this.props.children != nextProps.children
     }
 
     render() {
-        console.log('ZFTitleView========刷新')
+        console.log('========刷新-titleView')
         var self = this;
         const {
-            textStyle,
+            titleStyle,
             title,
-            backgroundColor,
             children,
+            canTag,
+            style,
+            tagColor,
         }=self.props;
 
         return (
             <View style={{
                 ...styles.container,
                 padding:10,
-                backgroundColor:'#fff',
-                justifyContent:'space-around'
+                ...style,
+                justifyContent:'space-around',
             }}>
-                <View style={styles.container}>
-                    <View style={[styles.tag,{backgroundColor}]} />
-                    <Text style={{
-                        ...styles.textStyle,
-                        ...textStyle,
-                    }}>{title}</Text>
-                </View>
                 <View style={{
-                    flex:1,
                     ...styles.container,
-                    justifyContent:'flex-end'
+                    flex:1
                 }}>
-                    {children}
+                    <View style={[styles.tag,{backgroundColor:tagColor}]} />
+                    <Text style={{
+                        ...styles.titleStyle,
+                        ...titleStyle,
+                    }}>{title}</Text>
+                    {
+                        canTag?<Text style={{
+                            color:'#e54d42',
+                            marginLeft:2,
+                        }}>*</Text>:null
+                    }
                 </View>
+                {
+                    children?<View style={{
+                        flex:1,
+                        ...styles.container,
+                        justifyContent:'flex-end'
+                    }}>
+                        {children}
+                    </View>:null
+                }
             </View>
         );
     }
@@ -84,11 +91,10 @@ var styles = StyleSheet.create({
     container: {
         flexDirection:'row',
         alignItems:'center',
-        flex:1
     },
-    textStyle:{
+    titleStyle:{
         color:'#666',
-
+        fontSize:15,
     },
     tag:{
         marginRight:5,

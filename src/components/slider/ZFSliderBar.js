@@ -38,6 +38,8 @@ export default class ZFSliderBar extends Component {
         tagStyle:ViewPropTypes.style,
         children:Proptypes.node,
         sliderStyle:ViewPropTypes.style,
+        showTag:Proptypes.bool,
+
     }
 
     static defaultProps={
@@ -46,7 +48,8 @@ export default class ZFSliderBar extends Component {
         minimumValue:0,
         maximumValue:1,
         unProgressColor:'#ebeef5',
-        value:0
+        value:0,
+        showTag:true
     }
 
 
@@ -135,7 +138,7 @@ export default class ZFSliderBar extends Component {
 
     render() {
 
-        console.log('=====刷新界面')
+        // console.log('=====刷新界面')
         const {
             strokeWidth,
             tagStyle,
@@ -144,6 +147,7 @@ export default class ZFSliderBar extends Component {
             unProgressColor,
             strokeCap,
             progressColor,
+            showTag,
         }=this.props;
         const {
             sliderX,
@@ -179,29 +183,32 @@ export default class ZFSliderBar extends Component {
                         />
                     </Group>
                 </Surface>
-                <Animated.View style={{
-                    ...styles.tagStyle,
-                    ...tagStyle,
-                    position:'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    left:-strokeWidth/2,
-                    top:-(((tagStyle&&tagStyle.height)?tagStyle.height:styles.tagStyle.height)-strokeWidth)/2,
-                    transform :[
-                        {
-                            translateX:sliderX,
-                        }
-                    ]
-                }} {...this._panResponder.panHandlers}>
-                    {
-                        children?children:
-                            <AnimDrawText value={sliderX.interpolate({
-                            inputRange:[0,width-strokeWidth],
-                            outputRange:[0,100],
-                        })} />
-                    }
+                {
+                    showTag?
+                        <Animated.View style={{
+                            ...styles.tagStyle,
+                            ...tagStyle,
+                            position:'absolute',
+                            alignItems:'center',
+                            justifyContent:'center',
+                            left:-strokeWidth/2,
+                            top:-(((tagStyle&&tagStyle.height)?tagStyle.height:styles.tagStyle.height)-strokeWidth)/2,
+                            transform :[
+                                {
+                                    translateX:sliderX,
+                                }
+                            ]
+                        }} {...this._panResponder.panHandlers}>
+                            {
+                                children?children:
+                                    <AnimDrawText value={sliderX.interpolate({
+                                        inputRange:[0,width-strokeWidth],
+                                        outputRange:[0,100],
+                                    })} />
+                            }
+                        </Animated.View>:null
+                }
 
-                </Animated.View>
             </View>
         );
     }

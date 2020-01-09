@@ -56,31 +56,29 @@ export default class ZFAnimSwitch extends Component {
     }
 
 
-    shouldComponentUpdate(nextProps,nextState) {
-        // console.log('====nextState'+nextState.isOn)
-        // console.log('====state'+this.state.isOn)
-        if (nextState.isOn != this.state.isOn) {
-            // console.log('==== com'+this.state.isOn)
-            return false;
+    componentWillReceiveProps(nextProps){
+        console.log('=======',nextProps)
+        if(nextProps.isOn != this.props.isOn){
+            this.state.isOn = nextProps.isOn;
+            this.startAnimation()
         }
-        return true;
+    }
+
+    shouldComponentUpdate(nextProps,nextState) {
+        return false
     }
 
 
     startAnimation(){
         var self = this;
         const {
-            isOn,
             open,
+            isOn,
         }=self.state;
-
         Animated.timing(open,{
             toValue:isOn?1:0,
-            easeOut:Easing.linear()
         }).start(()=>{
-            self.setState({
-                isOn:!self.state.isOn,
-            })
+            self.state.isOn =! self.state.isOn;
         })
     }
 
@@ -88,7 +86,6 @@ export default class ZFAnimSwitch extends Component {
     getSize(){
         const{
             size,
-            onToggle,
         }=this.props;
 
         var packageData = {};
@@ -119,6 +116,7 @@ export default class ZFAnimSwitch extends Component {
 
 
     render() {
+        console.log('====刷新界面-switch')
         const {
             onColors,
             offColors,

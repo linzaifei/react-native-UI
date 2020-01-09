@@ -30,6 +30,17 @@ export default class ZFTimelineContrl extends Component {
     constructor(props) {
         super(props);
 
+        this.state={
+            bgImage:'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+            headerImg:'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+            list:[
+                'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50121/4224.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+            ],
+        }
 
     }
 
@@ -122,7 +133,7 @@ export default class ZFTimelineContrl extends Component {
 
                         rightView={
                             <ZFStoryCard
-                                image="http://sowcar.com/t6/690/1553670017x2890191853.jpg"
+                                image="http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg"
                                 title="《琵琶行-白居易》"
                                 content="冰泉冷涩弦凝绝，凝绝不通声暂歇。别有幽愁暗恨生，此时无声胜有声。银瓶乍破水浆迸，"
                                 tags={[{
@@ -165,8 +176,8 @@ export default class ZFTimelineContrl extends Component {
                                 }
                             ]} >
                                 <ZFMessageItem
-                                    image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
-                                    title="小林子"
+                                    image={'http://img95.699pic.com/photo/50121/4224.jpg_wh300.jpg'}
+                                    title="林林"
                                     titleType={'group'}
                                     titleTag="6人"
                                     time="22.22"

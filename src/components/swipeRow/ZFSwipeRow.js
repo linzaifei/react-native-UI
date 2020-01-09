@@ -30,27 +30,7 @@ export default class ZFSwipeRow extends Component {
     }
 
 
-    componentWillReceiveProps(nextProps){
-        console.log('========='+nextProps.isOpen)
-        if(this.props.isOpen != nextProps.isOpen){
-            if(nextProps.isOpen){
-                this.stopSwiper()
-            }else {
-                this.startSwiper()
-            }
-        }
-    }
-    componentDidMount(){
-        if(this.props.isOpen){
-            this.noteX=null;
-            this.startSwiper()
-        }
-    }
 
-    shouldComponentUpdate(nextProps,nextState){
-
-        return false;
-    }
 
     constructor(props) {
         super(props);
@@ -58,7 +38,9 @@ export default class ZFSwipeRow extends Component {
         this.isOpen = false;
         this.state={
             swiperX:new Animated.Value(0),
-            subW:(this.props.list.length * this.props.itemWidth)
+            subW:(this.props.list.length * this.props.itemWidth),
+            width:0,
+            height:0,
         }
 
         this._panResponder = PanResponder.create({
@@ -79,6 +61,28 @@ export default class ZFSwipeRow extends Component {
                 this.noteX=null;
             },
         })
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.log('========='+nextProps.isOpen)
+        if(this.props.isOpen != nextProps.isOpen){
+            if(nextProps.isOpen){
+                this.stopSwiper()
+            }else {
+                this.startSwiper()
+            }
+        }
+    }
+    componentDidMount(){
+        if(this.props.isOpen){
+            this.noteX=null;
+            this.startSwiper()
+        }
+    }
+
+    shouldComponentUpdate(nextProps,nextState){
+
+        return false;
     }
 
     _onPanResponderMove(event: Object, gestureState: Object):void{
@@ -188,6 +192,8 @@ export default class ZFSwipeRow extends Component {
 
         const {
             swiperX,
+            width,
+            height,
         }=this.state;
 
         return (
@@ -199,7 +205,8 @@ export default class ZFSwipeRow extends Component {
                 }}>
                     {this.getsubs()}
                 </View>
-                <Animated.View style={{
+                <Animated.View
+                    style={{
                     ...styles.subStyle,
                     transform:[{
                         translateX:swiperX,
@@ -214,8 +221,6 @@ export default class ZFSwipeRow extends Component {
 
 var styles = StyleSheet.create({
     container: {
-        flex:1,
-        alignItems:'center',
         backgroundColor: '#F5FCFF',
         width: '100%',
         overflow:'hidden',
@@ -230,7 +235,6 @@ var styles = StyleSheet.create({
     },
     subStyle:{
         backgroundColor:'grey',
-        flex:1,
         zIndex:100,
         width:'100%'
     }

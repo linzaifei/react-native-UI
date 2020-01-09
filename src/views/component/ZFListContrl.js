@@ -38,15 +38,14 @@ export default class ZFListContrl extends Component {
 
         this.state={
             scale :new Animated.Value(0),
+            bgImage:'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+            headerImg:'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
             list:[
-                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670043x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553669990x2890191853.jpg',
-                'http://sowcar.com/t6/690/1553670017x2890191853.jpg',
+                'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50121/4224.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50075/5724.jpg_wh300.jpg',
+                'http://img95.699pic.com/photo/50032/1554.jpg_wh300.jpg',
             ],
             listArr:[
                 {
@@ -144,7 +143,7 @@ export default class ZFListContrl extends Component {
             space,
             listArr,
             list,
-
+            headerImg
         }=self.state;
         return (
             <SafeAreaView style={{
@@ -414,7 +413,7 @@ export default class ZFListContrl extends Component {
                         <ZFTitleView title="消息类表" />
 
                         <ZFMessageItem
-                            image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
+                            image={headerImg}
                             title="小林子"
                             titleType={'group'}
                             titleTag="6人"
@@ -424,7 +423,7 @@ export default class ZFListContrl extends Component {
                         />
 
                         <ZFMessageItem
-                            image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
+                            image={headerImg}
                             title="小林子"
                             titleType={'group'}
                             titleTag="SVIP"
@@ -437,7 +436,7 @@ export default class ZFListContrl extends Component {
                         />
 
                         <ZFMessageItem
-                            image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
+                            image={headerImg}
                             title="小林子"
                             time="20.00"
                             detailType={'message'}
@@ -467,7 +466,7 @@ export default class ZFListContrl extends Component {
                             }
                         ]} isOpen={true} >
                             <ZFMessageItem
-                                image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
+                                image={headerImg}
                                 title="小林子"
                                 titleType={'group'}
                                 titleTag="6人"
@@ -495,7 +494,7 @@ export default class ZFListContrl extends Component {
                             )
                         }} >
                             <ZFMessageItem
-                                image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
+                                image={headerImg}
                                 title="小林子"
                                 titleType={'group'}
                                 titleTag="6人"
@@ -518,7 +517,7 @@ export default class ZFListContrl extends Component {
                             alert(index)
                         }} >
                             <ZFMessageItem
-                                image={'http://sowcar.com/t6/690/1553670017x2890191853.jpg'}
+                                image={headerImg}
                                 title="小林子"
                                 titleType={'group'}
                                 titleTag="6人"
